@@ -1,6 +1,6 @@
 package com.example.rentalcars.model.enums;
 
-public enum TransmissionEnum {
+public enum GearboxEnum {
     Manual,
     Automatic
 }

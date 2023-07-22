@@ -1,8 +1,8 @@
 package com.example.rentalcars.model.enums;
 
-public enum EngineEnum {
+public enum FuelTypeEnum {
     GASOLINE,
     DIESEL,
-    ELECTRIC,
+    Electricity,
     HYBRID
 }

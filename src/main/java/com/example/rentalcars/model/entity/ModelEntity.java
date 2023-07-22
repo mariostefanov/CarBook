@@ -1,8 +1,9 @@
 package com.example.rentalcars.model.entity;
 
-import com.example.rentalcars.model.enums.CategoryEnum;
+import com.example.rentalcars.model.enums.CoupeTypeEnum;
+import com.example.rentalcars.model.enums.DriveWheelEnum;
+import jakarta.persistence.*;
 
-import javax.persistence.*;
 
 @Entity
 @Table(name = "models")
@@ -10,16 +11,13 @@ public class ModelEntity extends BaseEntity{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private CategoryEnum category;
+    private int year;
 
-    @Column(nullable = false)
-    private String imageUrl;
+    private int seatsCount;
 
-    private int startYear;
+    private int fuelTankVolume;
 
-    private Long endYear;
+    private int doorsCount;
 
     @ManyToOne
     private BrandEntity brand;
@@ -33,39 +31,12 @@ public class ModelEntity extends BaseEntity{
         return this;
     }
 
-    public CategoryEnum getCategory() {
-        return category;
+    public int getYear() {
+        return year;
     }
 
-    public ModelEntity setCategory(CategoryEnum category) {
-        this.category = category;
-        return this;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public ModelEntity setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-        return this;
-    }
-
-    public int getStartYear() {
-        return startYear;
-    }
-
-    public ModelEntity setStartYear(int startYear) {
-        this.startYear = startYear;
-        return this;
-    }
-
-    public Long getEndYear() {
-        return endYear;
-    }
-
-    public ModelEntity setEndYear(Long endYear) {
-        this.endYear = endYear;
+    public ModelEntity setYear(int startYear) {
+        this.year = startYear;
         return this;
     }
 

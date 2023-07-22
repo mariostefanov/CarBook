@@ -1,40 +1,47 @@
 package com.example.rentalcars.model.entity;
 
-import com.example.rentalcars.model.enums.EngineEnum;
-import com.example.rentalcars.model.enums.TransmissionEnum;
+import com.example.rentalcars.model.enums.CoupeTypeEnum;
+import com.example.rentalcars.model.enums.FuelTypeEnum;
+import com.example.rentalcars.model.enums.GearboxEnum;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "offers")
+@Table(name = "vehicles")
 public class OfferEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private EngineEnum engine;
+    private FuelTypeEnum engine;
 
     private String imageUrl;
-
-    private int mileage;
 
     @Column(nullable = false)
     private BigDecimal pricePerDay;
 
+    @Column(nullable = false)
     private String description;
-
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TransmissionEnum transmission;
+    private GearboxEnum transmission;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private CoupeTypeEnum category;
 
     @Column(nullable = false)
     private int year;
 
-    public EngineEnum getEngine() {
+    @ManyToOne
+    private ModelEntity model;
+
+
+    public FuelTypeEnum getEngine() {
         return engine;
     }
 
-    public OfferEntity setEngine(EngineEnum engine) {
+    public OfferEntity setEngine(FuelTypeEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -45,15 +52,6 @@ public class OfferEntity extends BaseEntity {
 
     public OfferEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-        return this;
-    }
-
-    public int getMileage() {
-        return mileage;
-    }
-
-    public OfferEntity setMileage(int mileage) {
-        this.mileage = mileage;
         return this;
     }
 
@@ -75,12 +73,21 @@ public class OfferEntity extends BaseEntity {
         return this;
     }
 
-    public TransmissionEnum getTransmission() {
+    public GearboxEnum getTransmission() {
         return transmission;
     }
 
-    public OfferEntity setTransmission(TransmissionEnum transmission) {
+    public OfferEntity setTransmission(GearboxEnum transmission) {
         this.transmission = transmission;
+        return this;
+    }
+
+    public CoupeTypeEnum getCategory() {
+        return category;
+    }
+
+    public OfferEntity setCategory(CoupeTypeEnum category) {
+        this.category = category;
         return this;
     }
 
@@ -90,6 +97,15 @@ public class OfferEntity extends BaseEntity {
 
     public OfferEntity setYear(int year) {
         this.year = year;
+        return this;
+    }
+
+    public ModelEntity getModel() {
+        return model;
+    }
+
+    public OfferEntity setModel(ModelEntity model) {
+        this.model = model;
         return this;
     }
 }
