@@ -23,6 +23,8 @@ public class RentalEntity extends BaseEntity{
     @Column(nullable = false)
     private LocalDateTime dropOffDateTime;
 
+//    private Location pickUpLocation;
+
 
     public OfferEntity getVehicle() {
         return vehicle;
