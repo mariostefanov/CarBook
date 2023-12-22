@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 public class RentalEntity extends BaseEntity{
 
     @ManyToOne
-    private OfferEntity vehicle;
+    private VehicleEntity vehicle;
 
     @ManyToOne
     private UserEntity customer;
@@ -26,11 +26,11 @@ public class RentalEntity extends BaseEntity{
 //    private Location pickUpLocation;
 
 
-    public OfferEntity getVehicle() {
+    public VehicleEntity getVehicle() {
         return vehicle;
     }
 
-    public RentalEntity setVehicle(OfferEntity vehicle) {
+    public RentalEntity setVehicle(VehicleEntity vehicle) {
         this.vehicle = vehicle;
         return this;
     }

@@ -8,6 +8,7 @@ spring:
     hibernate:
       ddl-auto: create-drop
     defer-datasource-initialization: true
-#  sql:
-#    init:
-#      mode: always spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+  sql:
+    init:
+      mode: always
+#  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect

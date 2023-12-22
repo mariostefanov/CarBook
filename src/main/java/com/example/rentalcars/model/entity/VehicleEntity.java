@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "vehicles")
-public class OfferEntity extends BaseEntity {
+public class VehicleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FuelTypeEnum engine;
@@ -36,12 +36,18 @@ public class OfferEntity extends BaseEntity {
     @ManyToOne
     private ModelEntity model;
 
+    private int seatsCount;
+
+    private int fuelTankVolume;
+
+    private int doorsCount;
+
 
     public FuelTypeEnum getEngine() {
         return engine;
     }
 
-    public OfferEntity setEngine(FuelTypeEnum engine) {
+    public VehicleEntity setEngine(FuelTypeEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -50,7 +56,7 @@ public class OfferEntity extends BaseEntity {
         return imageUrl;
     }
 
-    public OfferEntity setImageUrl(String imageUrl) {
+    public VehicleEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -59,7 +65,7 @@ public class OfferEntity extends BaseEntity {
         return pricePerDay;
     }
 
-    public OfferEntity setPricePerDay(BigDecimal pricePerDay) {
+    public VehicleEntity setPricePerDay(BigDecimal pricePerDay) {
         this.pricePerDay = pricePerDay;
         return this;
     }
@@ -68,7 +74,7 @@ public class OfferEntity extends BaseEntity {
         return description;
     }
 
-    public OfferEntity setDescription(String description) {
+    public VehicleEntity setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -77,7 +83,7 @@ public class OfferEntity extends BaseEntity {
         return transmission;
     }
 
-    public OfferEntity setTransmission(GearboxEnum transmission) {
+    public VehicleEntity setTransmission(GearboxEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -86,7 +92,7 @@ public class OfferEntity extends BaseEntity {
         return category;
     }
 
-    public OfferEntity setCategory(CoupeTypeEnum category) {
+    public VehicleEntity setCategory(CoupeTypeEnum category) {
         this.category = category;
         return this;
     }
@@ -95,7 +101,7 @@ public class OfferEntity extends BaseEntity {
         return year;
     }
 
-    public OfferEntity setYear(int year) {
+    public VehicleEntity setYear(int year) {
         this.year = year;
         return this;
     }
@@ -104,8 +110,35 @@ public class OfferEntity extends BaseEntity {
         return model;
     }
 
-    public OfferEntity setModel(ModelEntity model) {
+    public VehicleEntity setModel(ModelEntity model) {
         this.model = model;
+        return this;
+    }
+
+    public int getSeatsCount() {
+        return seatsCount;
+    }
+
+    public VehicleEntity setSeatsCount(int seatsCount) {
+        this.seatsCount = seatsCount;
+        return this;
+    }
+
+    public int getFuelTankVolume() {
+        return fuelTankVolume;
+    }
+
+    public VehicleEntity setFuelTankVolume(int fuelTankVolume) {
+        this.fuelTankVolume = fuelTankVolume;
+        return this;
+    }
+
+    public int getDoorsCount() {
+        return doorsCount;
+    }
+
+    public VehicleEntity setDoorsCount(int doorsCount) {
+        this.doorsCount = doorsCount;
         return this;
     }
 }
