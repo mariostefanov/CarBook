@@ -17,9 +17,9 @@ public class HomeController {
         return "about";
     }
 
-//    @PostMapping("/")
-//    public String login(){
-//        return
-//    }
+    @GetMapping("/users/login")
+    public String login(){
+        return "login";
+    }
 }
 
