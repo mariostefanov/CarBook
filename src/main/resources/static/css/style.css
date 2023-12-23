@@ -9954,3 +9954,12 @@ p.register{
   margin-bottom: 0px;
 
 }
+
+label.field{
+  color: black;
+  margin-top: 8px;
+}
+
+#email {
+  padding-top: 13px;
+}
