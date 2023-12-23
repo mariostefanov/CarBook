@@ -74,7 +74,7 @@
 <!--		        </div>-->
 <!--          </div>-->
           <div class="col-md-8 block-9 mb-md-5 justify-content-center">
-            <form action="#" class="bg-light p-5 contact-form">
+            <form th:action="@{/users/login}" th:method="post" class="bg-light p-5 contact-form">
 <!--              <div class="form-group">-->
 <!--                <input type="text" class="form-control" placeholder="Your Name">-->
 <!--              </div>-->
@@ -90,7 +90,7 @@
               <div class="form-group">
               </div>
               <input type="submit" value="Log in" class="btn btn-primary btn-block btn-outline-dark">
-                <p class="p-">No account?</p>
+                <p class="register">No account?</p>
                 <a href="/users/register" class="btn btn-secondary btn-outline-dark btn-block">Register</a>
             </form>
 

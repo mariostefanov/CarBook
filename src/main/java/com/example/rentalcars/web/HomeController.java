@@ -20,5 +20,11 @@ public class HomeController {
     public String login(){
         return "auth-login";
     }
-}
+
+    @GetMapping("/users/register")
+        public String register(){
+            return "auth-register";
+        }
+    }
+
 
