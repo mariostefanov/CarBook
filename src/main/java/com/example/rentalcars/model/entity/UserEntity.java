@@ -24,6 +24,9 @@ public class UserEntity extends BaseEntity{
     @Column(nullable = false)
     private LocalDate birthDate;
 
+    @Column(nullable = false)
+    private String password;
+
     @OneToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> userRoles = new ArrayList<>();
    /* @OneToMany
@@ -79,5 +82,12 @@ public class UserEntity extends BaseEntity{
         return this;
     }
 
+    public String getPassword() {
+        return password;
+    }
 
+    public UserEntity setPassword(String password) {
+        this.password = password;
+        return this;
+    }
 }
