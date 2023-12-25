@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="/css/animate.css">
@@ -30,7 +31,8 @@
 
 <div th:replace="~{fragments/navbar}">Navbar</div>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');"
+         data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -77,23 +79,46 @@
                 <form th:action="@{/users/register}" th:method="post" class="bg-light p-5 contact-form">
                     <div class="form-group">
                         <label class="field">First name</label>
-                        <input type="text" class="form-control" placeholder="First Name">
+                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
+                        <p class="errors alert alert-danger">
+                            First name is required.
+                        </p>
                     </div>
                     <div class="form-group">
                         <label class="field">Last name</label>
-                        <input type="text" class="form-control" placeholder="Last Name">
+                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
                     </div>
+                    <p class="errors alert alert-danger">
+                        Last name is required.
+                    </p>
                     <div class="Birth date">
                         <label class="field">Last name</label>
-                        <input type="date" class="form-control" id="birth_date" placeholder="Birth date">
+                        <input type="date" name="birthDate" class="form-control" id="birth_date" placeholder="Birthdate">
+                        <p class="errors alert alert-danger">
+                            Birthdate is required.
+                        </p>
                     </div>
                     <div class="form-group">
-                        <label class="field" id="email">Email</label>
-                        <input type="text" class="form-control" placeholder="Email">
+                        <label class="field">Email</label>
+                        <input type="text" id="email" name="email" class="form-control" placeholder="Email">
+                        <p class="errors alert alert-danger">
+                            Email is required.
+                        </p>
+
                     </div>
                     <div class="form-group">
                         <label class="field">Password</label>
-                        <input type="text" class="form-control" placeholder="Password length(min 6 symbols)">
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Password length(min 6 symbols)">
+                        <p class="errors alert alert-danger">
+                            Password is required.
+                        </p>
+                    </div>
+                    <div class="form-group">
+                        <label class="field">Confirm Password</label>
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+                        <p class="errors alert alert-danger">
+                            Passwords should match.
+                        </p>
                     </div>
 
                     <!--              <div class="form-group">-->
@@ -119,9 +144,14 @@
 <div th:replace="~{fragments/footer}">Footer</div>
 
 
-
 <!-- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
 
 
 <script src="/js/jquery.min.js"></script>
