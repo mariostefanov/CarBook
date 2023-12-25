@@ -9975,3 +9975,8 @@ label.field{
   margin: 30px;
   border: 2px solid black;
 }
+
+ .welcome {
+   color: #f6f6f6;
+   font-size: 25px;
+}

@@ -36,9 +36,18 @@
       <div class="container">
         <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
           <div class="col-lg-8 ftco-animate">
-          	<div class="text w-100 text-center mb-md-5 pb-md-5">
-	            <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>
-	            <p style="font-size: 18px;">CarBook is a peer-to-peer car sharing platform that offers a sustainable and affordable way to travel around Bulgaria. Our mission is to connect car owners with people who need a ride, making transportation more efficient and eco-friendly.</p>
+          	<div class="welcome text w-100 text-center mb-md-5 pb-md-5">
+				Welcome to CarBook,
+				<span class="welcome" th:if="${@currentUser.isLoggedIn()}"
+					  th:text="${@currentUser.getName()}">
+				</span>
+
+				<span class="welcome" th:if="${@currentUser.isAnonymous()}"
+					  >Anonymous
+				</span>
+
+<!--	            <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>-->
+	            <p style="font-size: 18px; margin-top: 80px">CarBook is a peer-to-peer car sharing platform that offers a sustainable and affordable way to travel around Bulgaria. Our mission is to connect car owners with people who need a ride, making transportation more efficient and eco-friendly.</p>
 	            <!--<a href="https://vimeo.com/45830194" class="icon-wrap popup-vimeo d-flex align-items-center mt-4 justify-content-center">
 	            	<div class="icon d-flex align-items-center justify-content-center">
 	            		<span class="ion-ios-play"></span>
