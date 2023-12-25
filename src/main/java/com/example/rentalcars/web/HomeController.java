@@ -15,16 +15,8 @@ public class HomeController {
     public String about() {
         return "about";
     }
+}
 
-    @GetMapping("/users/login")
-    public String login(){
-        return "auth-login";
-    }
 
-    @GetMapping("/users/register")
-        public String register(){
-            return "auth-register";
-        }
-    }
 
 
