@@ -1,4 +1,4 @@
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -26,8 +26,8 @@
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 
 <!--                <li class="nav-item"><a class="nav-link" href="/users/register">Register</a></li>-->
-                <li class="nav-item"><a class="nav-link btn btn-outline-success nav-button mx-3" href="/users/login">Log in</a></li>
-                <li class="nav-item"><a class="nav-link btn btn-outline-success nav-button mx-3" href="/users/logout">Log out</a></li>
+                <li class="nav-item" th:if="${@currentUser.isAnonymous()}"><a class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/login}">Log in</a></li>
+                <li class="nav-item" th:if="${@currentUser.isLoggedIn()}"><a class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/logout}">Log out</a></li>
 
             </ul>
         </div>
