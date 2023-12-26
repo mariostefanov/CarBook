@@ -1,6 +1,6 @@
 package com.example.rentalcars.model.dto;
 
-public class UserLoginDto {
+public class UserLoginDTO {
     private String email;
 
     private String password;
@@ -10,7 +10,7 @@ public class UserLoginDto {
         return email;
     }
 
-    public UserLoginDto setEmail(String email) {
+    public UserLoginDTO setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -19,7 +19,7 @@ public class UserLoginDto {
         return password;
     }
 
-    public UserLoginDto setPassword(String password) {
+    public UserLoginDTO setPassword(String password) {
         this.password = password;
         return this;
     }

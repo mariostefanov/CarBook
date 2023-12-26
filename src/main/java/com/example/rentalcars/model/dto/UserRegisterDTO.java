@@ -5,11 +5,8 @@ public class UserRegisterDTO {
     private String lastName;
     private String birthdate;
     private String email;
-
     private String password;
-
     private String confirmPassword;
-
     public String getFirstName() {
         return firstName;
     }
@@ -28,14 +25,7 @@ public class UserRegisterDTO {
         return this;
     }
 
-    public String getBirthdate() {
-        return birthdate;
-    }
 
-    public UserRegisterDTO setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-        return this;
-    }
 
     public String getEmail() {
         return email;
@@ -61,6 +51,15 @@ public class UserRegisterDTO {
 
     public UserRegisterDTO setConfirmPassword(String confirmPassword) {
         this.confirmPassword = confirmPassword;
+        return this;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public UserRegisterDTO setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
         return this;
     }
 }
