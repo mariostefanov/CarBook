@@ -11,21 +11,23 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+            unique = true)
     private String email;
 
-    //private String password;
     @Column(nullable = false)
     private String firstName;
 
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = false)
-    private LocalDate birthDate;
+//    @Column(nullable = false)
+//    private LocalDate birthDate;
 
     @Column(nullable = false)
     private String password;
+
+    private boolean isActive;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> userRoles = new ArrayList<>();
@@ -59,14 +61,6 @@ public class UserEntity extends BaseEntity{
         return this;
     }
 
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public UserEntity setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-        return this;
-    }
 
     public List<UserRoleEntity> getUserRoles() {
         return userRoles;
@@ -88,6 +82,15 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public UserEntity setActive(boolean active) {
+        isActive = active;
         return this;
     }
 }

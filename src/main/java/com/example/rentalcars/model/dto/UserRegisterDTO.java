@@ -1,12 +1,26 @@
 package com.example.rentalcars.model.dto;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class UserRegisterDTO {
+
+    @NotEmpty
+    @Size(min =2, max = 20)
     private String firstName;
+    @NotEmpty
+    @Size(min =2, max = 20)
     private String lastName;
-    private String birthdate;
+    @NotEmpty
+    @Email
     private String email;
+    @NotEmpty
     private String password;
+    @NotEmpty
     private String confirmPassword;
+
     public String getFirstName() {
         return firstName;
     }
@@ -54,12 +68,4 @@ public class UserRegisterDTO {
         return this;
     }
 
-    public String getBirthdate() {
-        return birthdate;
-    }
-
-    public UserRegisterDTO setBirthdate(String birthdate) {
-        this.birthdate = birthdate;
-        return this;
-    }
 }

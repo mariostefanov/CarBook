@@ -55,7 +55,6 @@ public class UserService {
                 setFirstName(userRegisterDTO.getFirstName()).
                 setLastName(userRegisterDTO.getLastName()).
                 setEmail(userRegisterDTO.getEmail()).
-                setBirthDate(LocalDate.parse(userRegisterDTO.getBirthdate())).
                 setPassword(encoder.encode(userRegisterDTO.getPassword()));
 
         newUser = userRepository.save(newUser);

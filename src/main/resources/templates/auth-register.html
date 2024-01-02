@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Carbook - Free Bootstrap 4 Template by Colorlib</title>
     <meta charset="utf-8">
@@ -20,7 +21,9 @@
     <link rel="stylesheet" href="/css/ionicons.min.css">
 
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/jquery.timepicker.css">
+
 
 
     <link rel="stylesheet" href="/css/flaticon.css">
@@ -76,46 +79,67 @@
             <!--		        </div>-->
             <!--          </div>-->
             <div class="col-md-8 block-9 mb-md-5 justify-content-center">
-                <form th:action="@{/users/register}" th:method="post" class="bg-light p-5 contact-form">
+                <form th:action="@{/users/register}"
+                      th:method="post"
+                      th:object="${userModel}"
+                      class="bg-light p-5 contact-form">
                     <div class="form-group">
-                        <label class="field">First name</label>
-                        <input type="text" id="firstName" name="firstName" class="form-control" placeholder="First Name">
-                        <p class="errors alert alert-danger">
-                            First name is required.
+                        <label for="firstName" class="field">First name</label>
+                        <input
+                               id="firstName"
+                               name="firstName"
+                               th:field="*{firstName}"
+                               th:errorclass="is-invalid"
+                               type="text"
+                               class="form-control"
+                               placeholder="First Name"/>
+                        <p class="invalid-feedback errors alert alert-danger">
+                            First name is required and should be between 2 and 20 symbols.
                         </p>
                     </div>
                     <div class="form-group">
                         <label class="field">Last name</label>
-                        <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Last Name">
-                    </div>
-                    <p class="errors alert alert-danger">
-                        Last name is required.
-                    </p>
-                    <div class="Birth date">
-                        <label class="field">Birthdate</label>
-                        <input type="date" name="birthdate" class="form-control" id="birthdate" placeholder="Birthdate">
-                        <p class="errors alert alert-danger">
-                            Birthdate is required.
+                        <input type="text"
+                               id="lastName"
+                               name="lastName"
+                               th:field="*{lastName}"
+                               th:errorclass="is-invalid"
+                               class="form-control"
+                               placeholder="Last Name"/>
+                        <p class="invalid-feedback errors alert alert-danger">
+                            Last name is required and should be between 2 and 20 symbols.
                         </p>
                     </div>
+
+<!--                    <div class="Birth date">-->
+<!--                        <label class="field">Birthdate</label>-->
+<!--                        <input type="date" name="birthdate" class="form-control" id="birthdate" placeholder="Birthdate">-->
+<!--                        <p class="errors alert alert-danger">-->
+<!--                            Birthdate is required.-->
+<!--                        </p>-->
+<!--                    </div>-->
                     <div class="form-group">
                         <label class="field">Email</label>
-                        <input type="text" id="email" name="email" class="form-control" placeholder="Email">
-                        <p class="errors alert alert-danger">
-                            Email is required.
+                        <input type="text"
+                               id="email"
+                               th:field="*{email}"
+                               th:errorclass="is-invalid"
+                               class="form-control"
+                               placeholder="Email"/>
+                        <p class="invalid-feedback errors alert alert-danger">
+                            Email is required and should be valid.
                         </p>
-
                     </div>
                     <div class="form-group">
                         <label class="field">Password</label>
                         <input type="password" id="password" name="password" class="form-control" placeholder="Password length(min 6 symbols)">
                         <p class="errors alert alert-danger">
-                            Password is required.
+                            Password is required and should be at least 5 symbols.
                         </p>
                     </div>
                     <div class="form-group">
                         <label class="field">Confirm Password</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password">
+                        <input type="password" id="confirmPassword" name="confirmPassword" class="form-control" placeholder="Confirm Password"/>
                         <p class="errors alert alert-danger">
                             Passwords should match.
                         </p>

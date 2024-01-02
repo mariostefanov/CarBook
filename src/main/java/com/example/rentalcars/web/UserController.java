@@ -3,7 +3,9 @@ package com.example.rentalcars.web;
 import com.example.rentalcars.model.dto.UserLoginDTO;
 import com.example.rentalcars.model.dto.UserRegisterDTO;
 import com.example.rentalcars.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,18 +31,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/register")
-    public String register() {
-        return "auth-register";
-    }
-
-    //TODO Post-redirect-GET
-
-    @PostMapping("/register")
-    public String register(UserRegisterDTO registerDTO) {
-        userService.registerAndLogin(registerDTO);
-        return "redirect:/";
-    }
 
     @GetMapping("/logout")
     public String logout(){
