@@ -8,8 +8,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-@Table(name = "vehicles")
-public class VehicleEntity extends BaseEntity {
+@Table(name = "offers")
+public class OfferEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FuelTypeEnum engine;
@@ -47,7 +47,7 @@ public class VehicleEntity extends BaseEntity {
         return engine;
     }
 
-    public VehicleEntity setEngine(FuelTypeEnum engine) {
+    public OfferEntity setEngine(FuelTypeEnum engine) {
         this.engine = engine;
         return this;
     }
@@ -56,7 +56,7 @@ public class VehicleEntity extends BaseEntity {
         return imageUrl;
     }
 
-    public VehicleEntity setImageUrl(String imageUrl) {
+    public OfferEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
@@ -65,7 +65,7 @@ public class VehicleEntity extends BaseEntity {
         return pricePerDay;
     }
 
-    public VehicleEntity setPricePerDay(BigDecimal pricePerDay) {
+    public OfferEntity setPricePerDay(BigDecimal pricePerDay) {
         this.pricePerDay = pricePerDay;
         return this;
     }
@@ -74,7 +74,7 @@ public class VehicleEntity extends BaseEntity {
         return description;
     }
 
-    public VehicleEntity setDescription(String description) {
+    public OfferEntity setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -83,7 +83,7 @@ public class VehicleEntity extends BaseEntity {
         return transmission;
     }
 
-    public VehicleEntity setTransmission(GearboxEnum transmission) {
+    public OfferEntity setTransmission(GearboxEnum transmission) {
         this.transmission = transmission;
         return this;
     }
@@ -92,7 +92,7 @@ public class VehicleEntity extends BaseEntity {
         return category;
     }
 
-    public VehicleEntity setCategory(CoupeTypeEnum category) {
+    public OfferEntity setCategory(CoupeTypeEnum category) {
         this.category = category;
         return this;
     }
@@ -101,7 +101,7 @@ public class VehicleEntity extends BaseEntity {
         return year;
     }
 
-    public VehicleEntity setYear(int year) {
+    public OfferEntity setYear(int year) {
         this.year = year;
         return this;
     }
@@ -110,7 +110,7 @@ public class VehicleEntity extends BaseEntity {
         return model;
     }
 
-    public VehicleEntity setModel(ModelEntity model) {
+    public OfferEntity setModel(ModelEntity model) {
         this.model = model;
         return this;
     }
@@ -119,7 +119,7 @@ public class VehicleEntity extends BaseEntity {
         return seatsCount;
     }
 
-    public VehicleEntity setSeatsCount(int seatsCount) {
+    public OfferEntity setSeatsCount(int seatsCount) {
         this.seatsCount = seatsCount;
         return this;
     }
@@ -128,7 +128,7 @@ public class VehicleEntity extends BaseEntity {
         return fuelTankVolume;
     }
 
-    public VehicleEntity setFuelTankVolume(int fuelTankVolume) {
+    public OfferEntity setFuelTankVolume(int fuelTankVolume) {
         this.fuelTankVolume = fuelTankVolume;
         return this;
     }
@@ -137,7 +137,7 @@ public class VehicleEntity extends BaseEntity {
         return doorsCount;
     }
 
-    public VehicleEntity setDoorsCount(int doorsCount) {
+    public OfferEntity setDoorsCount(int doorsCount) {
         this.doorsCount = doorsCount;
         return this;
     }
