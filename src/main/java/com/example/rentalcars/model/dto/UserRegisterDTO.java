@@ -17,8 +17,10 @@ public class UserRegisterDTO {
     @Email
     private String email;
     @NotEmpty
+    @Size(min=5)
     private String password;
     @NotEmpty
+    @Size(min=5)
     private String confirmPassword;
 
     public String getFirstName() {
