@@ -12,35 +12,44 @@ import java.math.BigDecimal;
 public class OfferEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private FuelTypeEnum engine;
+    private FuelTypeEnum engine;//
 
     private String imageUrl;
 
     @Column(nullable = false)
-    private BigDecimal pricePerDay;
+    private BigDecimal pricePerDay;//
+
+    @Column(nullable = false)
+    private BigDecimal deposit;
 
     @Column(nullable = false)
     private String description;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private GearboxEnum transmission;
+    private GearboxEnum transmission;//
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private CoupeTypeEnum category;
 
     @Column(nullable = false)
-    private int year;
+    private int year;//
 
     @ManyToOne
-    private ModelEntity model;
+    private ModelEntity model;//
+
+    @ManyToOne(targetEntity = UserEntity.class)
+    private UserEntity owner;
 
     private int seatsCount;
 
-    private int fuelTankVolume;
+    private int fuelTankVolume;//
 
     private int doorsCount;
+
+
+    private int mileage;
 
 
     public FuelTypeEnum getEngine() {
@@ -139,6 +148,33 @@ public class OfferEntity extends BaseEntity {
 
     public OfferEntity setDoorsCount(int doorsCount) {
         this.doorsCount = doorsCount;
+        return this;
+    }
+
+    public int getMileage() {
+        return mileage;
+    }
+
+    public OfferEntity setMileage(int mileage) {
+        this.mileage = mileage;
+        return this;
+    }
+
+    public BigDecimal getDeposit() {
+        return deposit;
+    }
+
+    public OfferEntity setDeposit(BigDecimal deposit) {
+        this.deposit = deposit;
+        return this;
+    }
+
+    public UserEntity getOwner() {
+        return owner;
+    }
+
+    public OfferEntity setOwner(UserEntity owner) {
+        this.owner = owner;
         return this;
     }
 }

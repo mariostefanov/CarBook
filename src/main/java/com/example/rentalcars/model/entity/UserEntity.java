@@ -31,6 +31,9 @@ public class UserEntity extends BaseEntity{
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> userRoles = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner")
+    private List<OfferEntity> offers;
    /* @OneToMany
     private List<OfferEntity> offers;*/
 
@@ -91,6 +94,15 @@ public class UserEntity extends BaseEntity{
 
     public UserEntity setActive(boolean active) {
         isActive = active;
+        return this;
+    }
+
+    public List<OfferEntity> getOffers() {
+        return offers;
+    }
+
+    public UserEntity setOffers(List<OfferEntity> offers) {
+        this.offers = offers;
         return this;
     }
 }
