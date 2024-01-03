@@ -3,6 +3,7 @@ package com.example.rentalcars.service;
 import com.example.rentalcars.model.dto.UserLoginDTO;
 import com.example.rentalcars.model.dto.UserRegisterDTO;
 import com.example.rentalcars.model.entity.UserEntity;
+import com.example.rentalcars.model.mapper.UserMapper;
 import com.example.rentalcars.repository.UserRepository;
 import com.example.rentalcars.user.CurrentUser;
 import org.slf4j.Logger;
@@ -20,11 +21,16 @@ public class UserService {
     private final UserRepository userRepository;
     private final CurrentUser currentUser;
     private final PasswordEncoder encoder;
+    private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, CurrentUser currentUser, PasswordEncoder encoder) {
+    public UserService(UserRepository userRepository,
+                       CurrentUser currentUser,
+                       PasswordEncoder encoder,
+                       UserMapper userMapper) {
         this.userRepository = userRepository;
         this.currentUser = currentUser;
         this.encoder = encoder;
+        this.userMapper = userMapper;
     }
 
     public boolean login(UserLoginDTO userLoginDto) {
@@ -38,7 +44,7 @@ public class UserService {
         var rawPassword = userLoginDto.getPassword();
         var encodedPassword = userOpt.get().getPassword();
 
-        boolean success = encoder.matches(rawPassword,encodedPassword);
+        boolean success = encoder.matches(rawPassword, encodedPassword);
 
         if (success) {
             login(userOpt.get());
@@ -49,19 +55,15 @@ public class UserService {
         return success;
     }
 
-    public void registerAndLogin(UserRegisterDTO userRegisterDTO){
+    public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
 
-        UserEntity newUser = new UserEntity().
-                setFirstName(userRegisterDTO.getFirstName()).
-                setLastName(userRegisterDTO.getLastName()).
-                setEmail(userRegisterDTO.getEmail()).
-                setPassword(encoder.encode(userRegisterDTO.getPassword()));
+        UserEntity newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
+        newUser.setPassword(encoder.encode(userRegisterDTO.getPassword()));
 
         newUser = userRepository.save(newUser);
 
         login(newUser);
     }
-
 
 
     private void login(UserEntity userEntity) {
