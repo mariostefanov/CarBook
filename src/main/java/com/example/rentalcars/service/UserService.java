@@ -60,8 +60,7 @@ public class UserService {
         UserEntity newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
         newUser.setPassword(encoder.encode(userRegisterDTO.getPassword()));
 
-        newUser = userRepository.save(newUser);
-
+        userRepository.save(newUser);
         login(newUser);
     }
 

@@ -1,5 +1,6 @@
 package com.example.rentalcars.model.dto;
 
+import com.example.rentalcars.model.validation.UniqueUserEmail;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
@@ -13,8 +14,9 @@ public class UserRegisterDTO {
     @NotEmpty
     @Size(min =2, max = 20)
     private String lastName;
-    @NotEmpty
-    @Email
+    @NotEmpty(message = "User email should be provided.")
+    @Email(message = "User email should be valid.")
+    @UniqueUserEmail(message = "Account with this email already exists.")
     private String email;
     @NotEmpty
     @Size(min=5)
