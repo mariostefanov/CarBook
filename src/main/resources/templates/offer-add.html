@@ -56,14 +56,24 @@
                       class="bg-light p-5 contact-form">
                     <div class="row">
                     <div class="form-group col-md-6 mb-3">
-                        <label class="field">Model</label>
-                        <select  id="model" class="form-control">
+                        <label class="field" for="modelId">Model</label>
+                        <select  id="modelId"
+                                 name="modelId"
+                                 th:errorclass="is-invalid"
+                                 class="form-control">
                             <option value="">- Select a model -</option>
-                            <optgroup label="Brand name">
-                                <option>Model</option>
+                            <optgroup
+                                    th:each="brand: ${brands}"
+                                    th:label="${brand.name}">
+                                <option
+                                    th:each="model : ${brand.models}"
+                                    th:text="${model.name}"
+                                    th:value="${model.id}"
+                                    th:selected="${model.id} == ">Model1</option>
+
                             </optgroup>
                         </select>
-                        <p class="errors alert alert-danger">
+                        <p class="invalid-feedback errors alert alert-danger">
                             Vehicle model is required.
                         </p>
                     </div>
@@ -96,12 +106,19 @@
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label class="field" for="transmission">Transmission type</label>
-                        <select id="transmission" class="form-control">
+                        <select id="transmission"
+                                name="transmission"
+                                th:errorclass="is-invalid"
+                                class="form-control">
                             <option value="">- Select transmission type -</option>
-                            <option> Transmission type
+                            <option th:each="e :${T(com.example.rentalcars.model.enums.GearboxEnum).values()}"
+                                    th:text="${e}"
+                                    th:value="${e}"
+                                    th:selected="${e} == *{transmission}">
+                                Transmission type
                             </option>
                         </select>
-                        <p class="errors alert alert-danger">
+                        <p class="invalid-feedback errors alert alert-danger">
                             Transmission type is required.
                         </p>
                     </div>

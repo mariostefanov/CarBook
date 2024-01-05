@@ -1,6 +1,7 @@
 package com.example.rentalcars.web;
 
 import com.example.rentalcars.model.dto.AddOfferDTO;
+import com.example.rentalcars.service.BrandService;
 import com.example.rentalcars.service.OfferService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,11 @@ public class OfferController {
 
     private final OfferService offerService;
 
-    public OfferController(OfferService offerService) {
+    private final BrandService brandService;
+
+    public OfferController(OfferService offerService, BrandService brandService) {
         this.offerService = offerService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/offers/add")
@@ -24,7 +28,7 @@ public class OfferController {
         if (!model.containsAttribute("addOfferModel")) {
             model.addAttribute("addOfferModel", new AddOfferDTO());
         }
-
+        model.addAttribute("brands", brandService.getAllBrands());
         return "offer-add";
     }
 
@@ -42,6 +46,7 @@ public class OfferController {
             return "redirect:/offers/add";
         }
         //TODO
+        offerService.addOffer(addOfferModel);
 
         return "redirect:/";
     }
