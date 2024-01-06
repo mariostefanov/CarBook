@@ -1,12 +1,22 @@
 INSERT INTO brands (id, name)
 VALUES (1, 'Ford'),
        (2, 'Toyota'),
-       (3,'BMW');
+       (3,'BMW'),
+       (4,'Audi')
+;
 
 INSERT INTO models(id,brand_id,name)
 VALUES (1,1,'Focus'),
        (2,3,'X5'),
-       (3,3, 'M5');
+       (3,3, 'M5'),
+       (4,2, 'Yaris'),
+       (5, 1,'Mondeo'),
+       (6, 1,'Escord'),
+       (7, 3,'3 series'),
+       (8, 3,'X7'),
+       (9, 2,'Corolla'),
+       (10, 4,'A6')
+;
 
 INSERT INTO users (email, password, first_name, last_name, is_active)
 VALUES ( 'mario.stefanov14@gmail.com' ,'014c41dc0e1f7e5ffe8d705d4fb21915129d034fdeffea003f81a15d6ac2dc9cead142e28b74d9eb', 'Mario', 'Stefanov', 1);
