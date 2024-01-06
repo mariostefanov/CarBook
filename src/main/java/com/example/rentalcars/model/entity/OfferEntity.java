@@ -22,7 +22,8 @@ public class OfferEntity extends BaseEntity {
     @Column(nullable = false)
     private BigDecimal deposit;
 
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "text")
+
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -31,7 +32,7 @@ public class OfferEntity extends BaseEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private CoupeTypeEnum category;
+    private CoupeTypeEnum coupeType;
 
     @Column(nullable = false)
     private int year;//
@@ -45,8 +46,6 @@ public class OfferEntity extends BaseEntity {
     private int seatsCount;
 
     private int fuelTankVolume;//
-
-    private int doorsCount;
 
 
     private int mileage;
@@ -97,12 +96,12 @@ public class OfferEntity extends BaseEntity {
         return this;
     }
 
-    public CoupeTypeEnum getCategory() {
-        return category;
+    public CoupeTypeEnum getCoupeType() {
+        return coupeType;
     }
 
-    public OfferEntity setCategory(CoupeTypeEnum category) {
-        this.category = category;
+    public OfferEntity setCoupeType(CoupeTypeEnum coupeType) {
+        this.coupeType = coupeType;
         return this;
     }
 
@@ -139,15 +138,6 @@ public class OfferEntity extends BaseEntity {
 
     public OfferEntity setFuelTankVolume(int fuelTankVolume) {
         this.fuelTankVolume = fuelTankVolume;
-        return this;
-    }
-
-    public int getDoorsCount() {
-        return doorsCount;
-    }
-
-    public OfferEntity setDoorsCount(int doorsCount) {
-        this.doorsCount = doorsCount;
         return this;
     }
 

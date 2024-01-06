@@ -69,7 +69,7 @@
                                     th:each="model : ${brand.models}"
                                     th:text="${model.name}"
                                     th:value="${model.id}"
-                                    th:selected="${model.id} == ">Model1</option>
+                                    th:selected="*{modelId} == ${model.id}">Model</option>
 
                             </optgroup>
                         </select>
@@ -79,8 +79,15 @@
                     </div>
                     <div class="form-group col-md-6 mb-3">
                         <label  for="price" class="field">Price per day(EUR)</label>
-                        <input id="price" type="number" class="form-control" placeholder="Price per day" step="any">
-                        <p class="errors alert alert-danger">
+                        <input id="price"
+                               type="number"
+                               th:field="*{pricePerDay}"
+                               th:errorclass="is-invalid"
+                               class="form-control"
+                               placeholder="Price per day"
+                               step="any"
+                        >
+                        <p class="invalid-feedback errors alert alert-danger">
                             Price per day is required.
                         </p>
                     </div>
@@ -126,15 +133,25 @@
                         <div class="row">
                             <div class="form-group col-md-6 mb-3">
                                 <label for="year" class="field">Manufacturing year</label>
-                                <input id="year" type="number" class="form-control" placeholder="Manufacturing year">
-                                <p class="errors alert alert-danger">
+                                <input id="year"
+                                       type="number"
+                                       th:field="*{year}"
+                                       th:errorclass="is-invalid"
+                                       class="form-control"
+                                       placeholder="Manufacturing year">
+                                <p class="invalid-feedback errors alert alert-danger">
                                     Manufacturing year is required.
                                 </p>
                             </div>
                             <div class="form-group col-md-6 mb-3">
                                 <label  for="fuelTank" class="field">Fuel tank volume</label>
-                                <input id="fuelTank" type="number" class="form-control" placeholder="Fuel tank volume">
-                                <p class="errors alert alert-danger">
+                                <input id="fuelTank"
+                                       th:field="*{fuelTankVolume}"
+                                       th:errorclass="is-invalid"
+                                       type="number"
+                                       class="form-control"
+                                       placeholder="Fuel tank volume">
+                                <p class="invalid-feedback errors alert alert-danger">
                                     Fuel tank volume is required.
                                 </p>
                             </div>
@@ -142,31 +159,72 @@
                     <div class="row">
                             <div class="form-group col-md-6 mb-3">
                                 <label for="mileage" class="field">Mileage</label>
-                                <input id="mileage" type="number" class="form-control" placeholder="mileage">
-                                <p class="errors alert alert-danger">
+                                <input id="mileage"
+                                       th:field="*{mileage}"
+                                       th:errorclass="is-invalid"
+                                       type="number"
+                                       class="form-control"
+                                       placeholder="mileage">
+                                <p class="invalid-feedback errors alert alert-danger">
                                     Mileage is required.
                                 </p>
                             </div>
                             <div class="form-group col-md-6 mb-3">
-                                <label  for="seats-count" class="field">Fuel tank volume</label>
-                                <input id="seats-count" type="number" class="form-control" placeholder="number of seats">
-                                <p class="errors alert alert-danger">
-                                    Fuel tank volume is required.
+                                <label  for="seats-count" class="field">Seats</label>
+                                <input id="seats-count"
+                                       th:field="*{seatsCount}"
+                                       th:errorclass="is-invalid"
+                                       type="number" class="form-control" placeholder="number of seats">
+                                <p class="invalid-feedback errors alert alert-danger">
+                                   Seats is required.
                                 </p>
                             </div>
                         </div>
-                    <div class="form-group">
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
                         <label  for="deposit" class="field">Deposit(EUR)</label>
-                        <input id="deposit" type="number" class="form-control" placeholder="Deposit" step="any">
-                        <p class="errors alert alert-danger">
+                        <input id="deposit"
+                               type="number"
+                               th:field="*{deposit}"
+                               th:errorclass="is-invalid"
+                               class="form-control"
+                               placeholder="Deposit"
+                               step="any">
+                        <p class="invalid-feedback errors alert alert-danger">
                             Deposit is required.
                         </p>
                     </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label class="field" for="coupeType">Coupe type</label>
+                            <select id="coupeType"
+                                    name="coupeType"
+                                    th:errorclass="is-invalid"
+                                    class="form-control">
+                                <option value="">- Select transmission type -</option>
+                                <option th:each="e :${T(com.example.rentalcars.model.enums.CoupeTypeEnum).values()}"
+                                        th:text="${e}"
+                                        th:value="${e}"
+                                        th:selected="${e} == *{coupeType}">
+                                    Transmission type
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Coupe type is required.
+                            </p>
+                        </div>
+
+                    </div>
                     <div class="form-group">
                         <label class="field" for="description">Description</label>
-                        <textarea id="description" type="textarea" class="form-control" rows="3"
-                                  placeholder="Description"></textarea>
-                        <p class="errors alert alert-danger">
+                        <textarea id="description"
+                                  type="textarea"
+                                  th:field="*{description}"
+                                  th:errorclass="is-invalid"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="Description">
+                        </textarea>
+                        <p class="invalid-feedback errors alert alert-danger">
                             Description is required.
                         </p>
                     </div>
@@ -174,9 +232,11 @@
                         <label class="field" for="imageUrl">Image URL</label>
                         <input id="imageUrl"
                                type="url"
+                               th:field="*{imageUrl}"
+                               th:errorclass="is-invalid"
                                class="form-control"
                                placeholder="Put vehicle image URL here">
-                        <p class="errors alert alert-danger">
+                        <p class="invalid-feedback errors alert alert-danger">
                             Vehicle image URL is required.
                         </p>
                     </div>
