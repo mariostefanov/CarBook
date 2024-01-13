@@ -3,7 +3,6 @@ package com.example.rentalcars.model.entity;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +28,7 @@ public class UserEntity extends BaseEntity{
 
     private boolean isActive;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<UserRoleEntity> userRoles = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner")
