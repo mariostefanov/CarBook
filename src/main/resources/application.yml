@@ -10,5 +10,8 @@ spring:
     defer-datasource-initialization: true
   sql:
     init:
-      mode: always
+      mode: never
+  integration:
+    management:
+      default-logging-enabled: true
 #  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect

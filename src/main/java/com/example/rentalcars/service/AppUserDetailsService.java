@@ -2,6 +2,7 @@ package com.example.rentalcars.service;
 
 import com.example.rentalcars.model.entity.UserEntity;
 import com.example.rentalcars.model.entity.UserRoleEntity;
+import com.example.rentalcars.model.user.AppUserDetails;
 import com.example.rentalcars.repository.UserRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,7 +21,7 @@ public class AppUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    public AppUserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         
         return  userRepository.
                 findByEmail(email).
@@ -31,16 +32,19 @@ public class AppUserDetailsService implements UserDetailsService {
 
     }
 
-    private UserDetails map(UserEntity userEntity) {
+    private AppUserDetails map(UserEntity userEntity) {
 
-        return User.builder().
-                username(userEntity.getEmail()).
-                password(userEntity.getPassword()).
-                authorities(userEntity.getUserRoles().
-                        stream().
-                        map(this::map).
-                        toList()).
-                build();
+        return new AppUserDetails(
+                userEntity.getPassword(),
+                userEntity.getEmail(),
+                userEntity.getFirstName(),
+                userEntity.getLastName(),
+                userEntity.getUserRoles().
+                stream().
+                map(this::map).
+                toList()
+        );
+
     }
 
     private GrantedAuthority map(UserRoleEntity userRole){

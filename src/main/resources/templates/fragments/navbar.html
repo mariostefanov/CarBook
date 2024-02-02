@@ -1,4 +1,6 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -14,7 +16,7 @@
             <span class="oi oi-menu"></span> Menu
         </button>
 
-        <div class="collapse navbar-collapse" id="ftco-nav">
+        <thdiv class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <!--make active dynamic-->
                 <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
@@ -26,8 +28,8 @@
                 <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
 
 <!--                <li class="nav-item"><a class="nav-link" href="/users/register">Register</a></li>-->
-                <li class="nav-item" th:if="${@currentUser.isAnonymous()}"><a class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/login}">Log in</a></li>
-                <li class="nav-item" th:if="${@currentUser.isLoggedIn()}"><a class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/logout}">Log out</a></li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()"><a class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/login}">Log in</a></li>
+                <li class="nav-item" sec:authorize="isAuthenticated()"><div class="text-white">Welcome, <th:block sec:authentication="name">X</th:block></div> <a class="nav-link btn btn-outline-success nav-button mx-3" th:action="@{/users/logout}" th:method="post">Log out</a></li>
 
             </ul>
         </div>
