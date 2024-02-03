@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public PasswordEncoder defaultsForSpringSecurity_v5_8(){
+    public PasswordEncoder defaultsForSpringSecurity_v5_8() {
         return new Pbkdf2PasswordEncoder();
     }
 
@@ -42,7 +42,7 @@ public class SecurityConfig {
                             .usernameParameter("email")
                             .passwordParameter("password")
                             // where to go in case of successful login
-                            .defaultSuccessUrl("/",true)
+                            .defaultSuccessUrl("/", true)
                             //where to go in case that the login failed
                             .failureForwardUrl("/users/login-error");
                 }
@@ -51,7 +51,7 @@ public class SecurityConfig {
                     logout
                             // the URL where we should POST something in order to perform the logout
                             .logoutUrl("/users/logout")
-//                            .deleteCookies("JSESSIONID")
+                           // .deleteCookies("JSESSIONID")
                             // where to go when logged out?
                             .logoutSuccessUrl("/")
                             .logoutSuccessUrl("/")
