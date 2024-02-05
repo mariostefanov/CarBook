@@ -9980,3 +9980,9 @@ label.field{
    color: #f6f6f6;
    font-size: 25px;
 }
+
+a.nav-link.btn.btn-link.btn-outline-success.nav-button.logout{
+  margin-top: 12px;
+  color: white;
+  background: #01d28e;
+}

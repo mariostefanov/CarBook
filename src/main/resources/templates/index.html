@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head}"></head>
   <body>
 
@@ -13,10 +14,11 @@
           <div class="col-lg-8 ftco-animate">
           	<div class="welcome text w-100 text-center mb-md-5 pb-md-5">
 				Welcome to CarBook,
-				<span class="welcome"> TODO (First and Last names)</span>
+				<span sec:authorize="isAuthenticated()"  th:text="${#authentication.principal.fullName}" >
+				</span>
 
-				<span class="welcome"
-					  >Anonymous
+				<span sec:authorize="!isAuthenticated()">
+					Anonymous
 				</span>
 
 <!--	            <h1 class="mb-4">Fast &amp; Easy Way To Rent A Car</h1>-->
