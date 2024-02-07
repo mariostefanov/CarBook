@@ -1,5 +1,7 @@
 
 spring:
+  messages:
+    encoding: UTF-8
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3307/rental-cars?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
@@ -22,6 +24,7 @@ mail:
     port: 1025
     username: 'carbook@carbook.com'
     password: ""
+
 
 
 
