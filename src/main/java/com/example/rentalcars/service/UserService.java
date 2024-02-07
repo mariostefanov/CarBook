@@ -7,6 +7,11 @@ import com.example.rentalcars.model.enums.UserRoleEnum;
 import com.example.rentalcars.model.mapper.UserMapper;
 import com.example.rentalcars.repository.UserRepository;
 import com.example.rentalcars.repository.UserRoleRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -23,19 +28,24 @@ public class UserService {
 
     private final PasswordEncoder encoder;
     private final UserMapper userMapper;
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsService userDetailsService;
+    private final EmailService emailService;
 
     public UserService(UserRepository userRepository,
                        UserRoleRepository userRoleRepository,
-
                        PasswordEncoder encoder,
-                       UserMapper userMapper, PasswordEncoder passwordEncoder) {
+                       UserMapper userMapper,
+                       PasswordEncoder passwordEncoder,
+                       UserDetailsService userDetailsService,
+                       EmailService emailService) {
         this.userRepository = userRepository;
         this.userRoleRepository = userRoleRepository;
-
         this.encoder = encoder;
         this.userMapper = userMapper;
         this.passwordEncoder = passwordEncoder;
+        this.userDetailsService = userDetailsService;
+        this.emailService = emailService;
     }
 
 
@@ -46,8 +56,25 @@ public class UserService {
         newUser.setPassword(encoder.encode(userRegisterDTO.getPassword()));
 
         userRepository.save(newUser);
-        //login(newUser);
+
+        login(newUser);
+        emailService.sendRegistrationEmail(newUser.getEmail(),
+                newUser.getFirstName() + " " + newUser.getLastName());
     }
+
+    public void login(UserEntity userEntity){
+        UserDetails userDetails = userDetailsService.
+                loadUserByUsername(userEntity.getEmail());
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(auth);
+    }
+
 
 
 

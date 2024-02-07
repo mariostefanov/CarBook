@@ -4,6 +4,8 @@ import com.example.rentalcars.model.dto.AddOfferDTO;
 import com.example.rentalcars.service.BrandService;
 import com.example.rentalcars.service.OfferService;
 import jakarta.validation.Valid;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -35,7 +37,8 @@ public class OfferController {
     @PostMapping("/offers/add")
     public String addOffer(@Valid AddOfferDTO addOfferModel,
                            BindingResult bindingResult,
-                           RedirectAttributes redirectAttributes) {
+                           RedirectAttributes redirectAttributes,
+                           @AuthenticationPrincipal UserDetails userDetails) {
 
         if (bindingResult.hasErrors()) {
 
@@ -45,8 +48,8 @@ public class OfferController {
 
             return "redirect:/offers/add";
         }
-        //TODO
-        offerService.addOffer(addOfferModel);
+
+        offerService.addOffer(addOfferModel,userDetails);
 
         return "redirect:/";
     }

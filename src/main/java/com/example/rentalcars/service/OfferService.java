@@ -8,6 +8,7 @@ import com.example.rentalcars.model.mapper.OfferMapper;
 import com.example.rentalcars.repository.ModelRepository;
 import com.example.rentalcars.repository.OfferRepository;
 import com.example.rentalcars.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,19 +26,18 @@ public class OfferService {
         this.modelRepository = modelRepository;
     }
 
-    public void addOffer(AddOfferDTO addOfferDTO){
+    public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails){
 
         OfferEntity newOffer = offerMapper
                 .addOfferDTOToOfferEntity(addOfferDTO);
 
         //TODO: current user should be logged in
-        //UserEntity owner = userRepository.findByEmail(currentUser.getEmail()).orElseThrow();
+        UserEntity owner = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
 
         ModelEntity model = modelRepository.findById(addOfferDTO.getModelId()).orElseThrow();
 
         newOffer.setModel(model);
-
-        //newOffer.setOwner(owner);
+        newOffer.setOwner(owner);
 
         offerRepository.save(newOffer);
     }
