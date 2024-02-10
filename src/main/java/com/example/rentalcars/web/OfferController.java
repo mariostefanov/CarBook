@@ -4,6 +4,8 @@ import com.example.rentalcars.model.dto.AddOfferDTO;
 import com.example.rentalcars.service.BrandService;
 import com.example.rentalcars.service.OfferService;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -25,7 +27,7 @@ public class OfferController {
         this.brandService = brandService;
     }
 
-    @GetMapping("/offers/add")
+    @GetMapping("offers/add")
     public String addOffer(Model model) {
         if (!model.containsAttribute("addOfferModel")) {
             model.addAttribute("addOfferModel", new AddOfferDTO());
@@ -34,7 +36,7 @@ public class OfferController {
         return "offer-add";
     }
 
-    @PostMapping("/offers/add")
+    @PostMapping("offers/add")
     public String addOffer(@Valid AddOfferDTO addOfferModel,
                            BindingResult bindingResult,
                            RedirectAttributes redirectAttributes,
@@ -52,5 +54,13 @@ public class OfferController {
         offerService.addOffer(addOfferModel,userDetails);
 
         return "redirect:/";
+    }
+
+    @GetMapping("offers/all")
+    public String allOffers(
+            Model model,
+            @PageableDefault(page = 0,size = 6) Pageable pageable) {
+        model.addAttribute("offers",offerService.getAllOffers(pageable));
+        return "car";
     }
 }

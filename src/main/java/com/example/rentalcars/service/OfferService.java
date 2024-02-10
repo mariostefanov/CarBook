@@ -1,6 +1,7 @@
 package com.example.rentalcars.service;
 
 import com.example.rentalcars.model.dto.AddOfferDTO;
+import com.example.rentalcars.model.dto.OfferDetailsDTO;
 import com.example.rentalcars.model.entity.ModelEntity;
 import com.example.rentalcars.model.entity.OfferEntity;
 import com.example.rentalcars.model.entity.UserEntity;
@@ -8,8 +9,11 @@ import com.example.rentalcars.model.mapper.OfferMapper;
 import com.example.rentalcars.repository.ModelRepository;
 import com.example.rentalcars.repository.OfferRepository;
 import com.example.rentalcars.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class OfferService {
@@ -24,6 +28,10 @@ public class OfferService {
         this.offerMapper = offerMapper;
         this.userRepository = userRepository;
         this.modelRepository = modelRepository;
+    }
+
+    public Page<OfferDetailsDTO> getAllOffers(Pageable pageable){
+        return offerRepository.findAll(pageable).map(offerMapper::offerEntityToOfferDetailsDTO );
     }
 
     public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails){
