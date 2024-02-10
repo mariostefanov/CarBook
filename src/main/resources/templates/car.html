@@ -199,7 +199,7 @@
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a
+                <li th:classappend="${offers.isFirst()} ? 'disabled' : 'active'"><a
                         th:if="${offers.hasPrevious()}"
                         th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() - 1})}"
                         >&lt;</a>
@@ -208,17 +208,17 @@
                             th:unless="${offers.hasPrevious()}" href="#" >&lt;
                     </a>
                 </li>
-                <li class="active"><span>1</span></li>
+                <li class="disabled"><span>1</span></li>
 
 <!--                <li><a href="#">2</a></li>-->
 <!--                <li><a href="#">3</a></li>-->
 <!--                <li><a href="#">4</a></li>-->
 <!--                <li><a href="#">5</a></li>-->
-                <li><a
+                <li th:classappend="${offers.hasNext()} ? 'active' : 'disabled'"><a
                         th:if="${offers.hasNext()}"
                     th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() + 1})}">&gt;</a>
                     <a
-                            th:unless="${offers.hasNext()}" href="#">&gt;
+                            th:unless="${offers.hasNext()}" th:classappend="${offers.hasNext()} ? 'active' : 'disabled'">&gt;
                     </a>
                 </li>
               </ul>
