@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,13 +8,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to CarBook!</h1>
-    Dear <th:block th:text="${username}">User</th:block>
-    <p>
+    <h1 th:text="#{registration_welcome}">Welcome to CarBook!</h1>
+    <th:block th:text="#{registration_dear_user(${username})}">Dear user!</th:block>
+    <p th:text = "#{registration_happy}">
         We are happy that you are part of our community now!
     </p>
-    Best regards,
-    The CarBook team.
+    <th:block th:text="#{registration_best_regards}"> Best regards,
+    The CarBook team.</th:block>
 </body>
 
 </html>

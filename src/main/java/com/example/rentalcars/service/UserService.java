@@ -16,6 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -50,7 +51,7 @@ public class UserService {
 
 
 
-    public void registerAndLogin(UserRegisterDTO userRegisterDTO) {
+    public void registerAndLogin(UserRegisterDTO userRegisterDTO, Locale preferredLocale) {
 
         UserEntity newUser = userMapper.userDtoToUserEntity(userRegisterDTO);
         newUser.setPassword(encoder.encode(userRegisterDTO.getPassword()));
@@ -59,7 +60,7 @@ public class UserService {
 
         login(newUser);
         emailService.sendRegistrationEmail(newUser.getEmail(),
-                newUser.getFirstName() + " " + newUser.getLastName());
+                newUser.getFirstName() + " " + newUser.getLastName(), preferredLocale);
     }
 
     public void login(UserEntity userEntity){
