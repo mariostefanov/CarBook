@@ -16,7 +16,7 @@ mail:
   host: "localhost"
   port: 1025
   username: 'carbook@carbook.com'
-  password: ""
+  password: "parolka123"
 
 
 
