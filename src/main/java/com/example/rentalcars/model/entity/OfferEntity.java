@@ -4,20 +4,32 @@ import com.example.rentalcars.model.enums.CoupeTypeEnum;
 import com.example.rentalcars.model.enums.FuelTypeEnum;
 import com.example.rentalcars.model.enums.GearboxEnum;
 
+import com.example.rentalcars.model.enums.PuckUpAndDropOffLocation;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.Type;
+
 import java.math.BigDecimal;
+import java.sql.Types;
+import java.util.UUID;
 
 @Entity
 @Table(name = "offers")
-public class OfferEntity extends BaseEntity {
+public class OfferEntity{
+    @Id
+    @NotNull
+    @JdbcTypeCode(Types.VARCHAR)
+    private UUID uuid;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private FuelTypeEnum engine;//
+    private FuelTypeEnum engine;
 
     private String imageUrl;
 
     @Column(nullable = false)
-    private BigDecimal pricePerDay;//
+    private BigDecimal pricePerDay;
 
     @Column(nullable = false)
     private BigDecimal deposit;
@@ -35,7 +47,7 @@ public class OfferEntity extends BaseEntity {
     private CoupeTypeEnum coupeType;
 
     @Column(nullable = false)
-    private int year;//
+    private int year;
 
     @ManyToOne
     private ModelEntity model;//
@@ -50,6 +62,19 @@ public class OfferEntity extends BaseEntity {
 
     private int mileage;
 
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private PuckUpAndDropOffLocation location;
+
+
+    public UUID getUUID() {
+        return uuid;
+    }
+
+    public OfferEntity setUUID(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
 
     public FuelTypeEnum getEngine() {
         return engine;
@@ -165,6 +190,24 @@ public class OfferEntity extends BaseEntity {
 
     public OfferEntity setOwner(UserEntity owner) {
         this.owner = owner;
+        return this;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public OfferEntity setUuid(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
+
+    public PuckUpAndDropOffLocation getLocation() {
+        return location;
+    }
+
+    public OfferEntity setLocation(PuckUpAndDropOffLocation location) {
+        this.location = location;
         return this;
     }
 }
