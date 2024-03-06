@@ -1,5 +1,6 @@
 package com.example.rentalcars.web;
 
+import com.example.rentalcars.exception.ObjectNotFoundException;
 import com.example.rentalcars.model.dto.AddOfferDTO;
 import com.example.rentalcars.service.BrandService;
 import com.example.rentalcars.service.OfferService;
@@ -12,8 +13,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import java.util.UUID;
 
 @Controller
 public class OfferController {
@@ -62,5 +66,18 @@ public class OfferController {
             @PageableDefault(page = 0,size = 6) Pageable pageable) {
         model.addAttribute("offers",offerService.getAllOffers(pageable));
         return "car";
+    }
+
+
+
+    @GetMapping("/offers/{id}")
+    public String getOfferDetail(@PathVariable("id") UUID uuid, Model model){
+        System.out.println("sASasAS");
+        var offerDto =
+                offerService.findOfferByUUID(uuid)
+                        .orElseThrow(() -> new ObjectNotFoundException("Offer with UUID " + uuid + " not found!"));
+
+        model.addAttribute("offer", offerDto);
+        return  "car-single";
     }
 }

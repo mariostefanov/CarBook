@@ -8,6 +8,9 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class OfferDetailsDTO {
+//
+    private String brand;
+    private String model;
     private String imageUrl;
 
     private BigDecimal pricePerDay;
@@ -32,7 +35,32 @@ public class OfferDetailsDTO {
 
     private CoupeTypeEnum coupeType;
 
+    private String ownerFirstName;
+
+    private String ownerLastName;
+
+    private String location;
+
     public OfferDetailsDTO() {
+    }
+
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public OfferDetailsDTO setBrand(String brand) {
+        this.brand = brand;
+        return this;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public OfferDetailsDTO setModel(String model) {
+        this.model = model;
+        return this;
     }
 
     public String getImageUrl() {
@@ -132,6 +160,33 @@ public class OfferDetailsDTO {
 
     public OfferDetailsDTO setCoupeType(CoupeTypeEnum coupeType) {
         this.coupeType = coupeType;
+        return this;
+    }
+
+    public String getOwnerFirstName() {
+        return ownerFirstName;
+    }
+
+    public OfferDetailsDTO setOwnerFirstName(String ownerFirstName) {
+        this.ownerFirstName = ownerFirstName;
+        return this;
+    }
+
+    public String getOwnerLastName() {
+        return ownerLastName;
+    }
+
+    public OfferDetailsDTO setOwnerLastName(String ownerLastName) {
+        this.ownerLastName = ownerLastName;
+        return this;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public OfferDetailsDTO setLocation(String location) {
+        this.location = location;
         return this;
     }
 }

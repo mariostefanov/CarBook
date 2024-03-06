@@ -14,6 +14,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.UUID;
+
 
 @Service
 public class OfferService {
@@ -31,14 +34,14 @@ public class OfferService {
     }
 
     public Page<OfferDetailsDTO> getAllOffers(Pageable pageable){
-        return offerRepository.findAll(pageable).map(offerMapper::offerEntityToOfferDetailsDTO );
+        return offerRepository.findAll(pageable).map(offerMapper::offerEntityToOfferDetailDTO);
     }
 
     public void addOffer(AddOfferDTO addOfferDTO, UserDetails userDetails){
 
         OfferEntity newOffer = offerMapper
                 .addOfferDTOToOfferEntity(addOfferDTO);
-
+        newOffer.setUUID(UUID.randomUUID());
         //TODO: current user should be logged in
         UserEntity owner = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
 
@@ -50,4 +53,9 @@ public class OfferService {
         offerRepository.save(newOffer);
     }
 
+    public Optional<OfferDetailsDTO> findOfferByUUID(UUID uuid) {
+        return this.offerRepository.
+                findById(uuid).
+                map(offerMapper::offerEntityToOfferDetailDTO);
+    }
 }
