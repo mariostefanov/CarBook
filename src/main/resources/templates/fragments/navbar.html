@@ -38,7 +38,8 @@
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
                     <form  th:action="@{/users/logout}" th:method="post">
-                        <input class="nav-link btn-outline-success logout nav-button text-dark" type="submit" th:value="#{navbar_logout}">
+                        <input class="nav-link btn btn-outline-success btn-secondary logout nav-button text-dark py-0 px-0" type="submit" th:value="#{navbar_logout}">
+
                     </form>
                 </li>
                 <li class="nav-item">
