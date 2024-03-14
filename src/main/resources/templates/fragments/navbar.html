@@ -20,7 +20,7 @@
         <div class="collapse navbar-collapse" id="ftco-nav">
             <ul class="navbar-nav ml-auto">
                 <!--make active dynamic-->
-                <li class="nav-item" ><a th:text="#{navbar_home}" href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a th:text="#{navbar_home}" href="/" class="nav-link">Home</a></li>
                 <li class="nav-item"><a th:text="#{navbar_about}" href="/about" class="nav-link">About</a></li>
                 <li class="nav-item" sec:authorize="hasRole('ADMIN')">
                     <a th:text="#{navbar_admin}" href="/admin" class="nav-link">Admin</a></li>
@@ -29,30 +29,41 @@
                 <!--                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>-->
                 <!--                <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>-->
                 <li class="nav-item "><a th:text="#{navbar_all_cars}" href="/offers/all" class="nav-link">Cars</a></li>
-<!--                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>-->
-<!--                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>-->
+                <!--                <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>-->
+                <!--                <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>-->
 
-                <!--                <li class="nav-item"><a class="nav-link" href="/users/register">Register</a></li>-->
+
+            </ul>
+            <ul class="navbar-nav ml-auto">
                 <li class="nav-item" sec:authorize="!isAuthenticated()">
-                    <a th:text="#{navbar_login}" class="nav-link btn btn-outline-success nav-button mx-3" th:href="@{/users/login}">Log in</a>
+                    <a th:text="#{navbar_login}" class="nav-link btn btn-outline-success nav-button mx-3"
+                       th:href="@{/users/login}">Log in</a>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" th:href="@{/users/register}">Register</a>
                 </li>
                 <li class="nav-item" sec:authorize="isAuthenticated()">
-                    <form  th:action="@{/users/logout}" th:method="post">
-                        <input class="nav-link btn btn-outline-success btn-secondary logout nav-button text-dark py-0 px-0" type="submit" th:value="#{navbar_logout}">
-
+                    <form th:action="@{/users/logout}" th:method="post">
+                        <button class="nav-link btn btn-outline-success logout nav-button py-3 px-2 text-white"
+                                type="submit">
+                            <span th:text="#{navbar_logout}"></span>
+                        </button>
                     </form>
                 </li>
                 <li class="nav-item">
                     <form th:method="get">
-                        <label for="lang"></label><select
+                        <select class="nav-link btn nav-button text-white py-3 px-2"
                                 onchange="this.form.submit()"
                                 id="lang"
                                 name="lang">
-                            <option value="en_US" th:selected="${#locale.toString()} == 'en_US'">EN</option>
-                            <option value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">БГ</option>
+                            <option class="text-dark" value="en_US" th:selected="${#locale.toString()} == 'en_US'">EN
+                            </option>
+                            <option class="text-dark" value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">БГ
+                            </option>
                         </select>
                     </form>
                 </li>
+
             </ul>
         </div>
     </div>
