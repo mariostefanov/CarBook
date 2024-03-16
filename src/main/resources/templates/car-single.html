@@ -27,8 +27,8 @@
       			<div class="car-details">
       				<div class="img rounded" style="background-image: url(/images/bg_1.jpg);"></div>
       				<div class="text text-center">
-      					<span class="subheading"><span th:text="*{brand}"></span></span>
-      					<h2><span th:text="*{model}"></span></h2>
+      					<h2><span th:text="*{getBrandAndModel}"></span></h2>
+
       				</div>
       			</div>
       		</div>
@@ -53,11 +53,11 @@
             <div class="media block-6 services">
               <div class="media-body py-md-4">
               	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
+	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
 	              	<div class="text">
 		                <h3 class="heading mb-0 pl-3">
-		                	Transmission
-		                	<span th:text="*{transmission}"></span>
+							Fuel
+							<span th:text="*{engine}">Petrol</span>
 		                </h3>
 	                </div>
                 </div>
@@ -68,16 +68,16 @@
             <div class="media block-6 services">
               <div class="media-body py-md-4">
               	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
+	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
 	              	<div class="text">
 		                <h3 class="heading mb-0 pl-3">
-		                	Seats
-		                	<span th:text="*{seatsCount}"></span>
-		                </h3>
+							Transmission
+							<span th:text="*{transmission}"></span>
+						</h3>
 	                </div>
                 </div>
               </div>
-            </div>      
+            </div>
           </div>
           <div class="col-md d-flex align-self-stretch ftco-animate">
             <div class="media block-6 services">
@@ -98,16 +98,16 @@
             <div class="media block-6 services">
               <div class="media-body py-md-4">
               	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
+	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
 	              	<div class="text">
 		                <h3 class="heading mb-0 pl-3">
-		                	Fuel
-		                	<span th:text="*{engine}">Petrol</span>
+							Seats
+							<span th:text="*{seatsCount}"></span>
 		                </h3>
 	                </div>
                 </div>
               </div>
-            </div>      
+            </div>
           </div>
       	</div>
       	<div class="row">
@@ -133,18 +133,18 @@
 						    	<div class="row">
 						    		<div class="col-md-4">
 						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Airconditions</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Air conditioning</li>
 						    				<li class="check"><span class="ion-ios-checkmark"></span>Child Seat</li>
 						    				<li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Luggage</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Music</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Cruise control</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Apple CarPlay</li>
 						    			</ul>
 						    		</div>
 						    		<div class="col-md-4">
 						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Seat Belt</li>
-						    				<li class="remove"><span class="ion-ios-close"></span>Sleeping Bed</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Water</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>GPS</li>
+						    				<li class="remove"><span class="ion-ios-close"></span>Roof box</li>
+						    				<li class="check"><span class="ion-ios-checkmark"></span>Four-wheel drive</li>
 						    				<li class="check"><span class="ion-ios-checkmark"></span>Bluetooth</li>
 						    				<li class="remove"><span class="ion-ios-close"></span>Onboard computer</li>
 						    			</ul>

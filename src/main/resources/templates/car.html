@@ -210,10 +210,6 @@
                 </li>
                 <li class="disabled"><span th:text="${offers.getNumber() + 1}"></span></li>
 
-<!--                <li><a href="#">2</a></li>-->
-<!--                <li><a href="#">3</a></li>-->
-<!--                <li><a href="#">4</a></li>-->
-<!--                <li><a href="#">5</a></li>-->
                 <li th:classappend="${offers.hasNext()} ? 'active' : 'hidden'"><a
                         th:if="${offers.hasNext()}"
                     th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() + 1})}">&gt;</a>

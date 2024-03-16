@@ -40,7 +40,7 @@ public class OfferEntity{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private GearboxEnum transmission;//
+    private GearboxEnum transmission;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -50,14 +50,14 @@ public class OfferEntity{
     private int year;
 
     @ManyToOne
-    private ModelEntity model;//
+    private ModelEntity model;
 
     @ManyToOne(targetEntity = UserEntity.class)
     private UserEntity owner;
 
     private int seatsCount;
 
-    private int fuelTankVolume;//
+    private int fuelTankVolume;
 
 
     private int mileage;

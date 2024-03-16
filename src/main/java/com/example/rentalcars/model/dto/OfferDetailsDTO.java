@@ -189,4 +189,8 @@ public class OfferDetailsDTO {
         this.location = location;
         return this;
     }
+
+    public String getBrandAndModel(){
+        return brand + " " + model;
+    }
 }
