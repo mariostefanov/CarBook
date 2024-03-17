@@ -40,53 +40,55 @@
                        th:href="@{/users/login}">Log in</a>
                 </li>
 
-<!--                TODO: complete the dropdown-->
-<!--                <div class="dropdown nav-item">-->
-                    <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="icon-person"></i>
-                            <span sec:authorize="isAuthenticated()"
-                                  th:text="${#authentication.principal.firstName}"></span>
-                            <!--                        <i class="icon-keyboard_arrow_down"></i>-->
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a class="dropdown-item" href="#">Dashboard</a>
-                            <a class="dropdown-item" href="#">Edit Profile</a>
-                            <form th:action="@{/users/logout}" th:method="post">
-                                <button class="btn logout dropdown-item"
-                                        type="submit">
-                                    <span th:text="#{navbar_logout}"></span>
-                                </button>
-                            </form>
-                            <a class="dropdown-item" href="#">Log Out</a>
-                        </div>
-                    </li>
-<!--                </div>-->
-<!--                <li class="nav-item" sec:authorize="!isAuthenticated()">-->
-<!--                    <form th:action="@{/users/logout}" th:method="post">-->
-<!--                        <button class="nav-link btn btn-outline-success logout nav-button py-3 px-2 text-white"-->
-<!--                                type="submit">-->
-<!--                            <span th:text="#{navbar_logout}"></span>-->
-<!--                        </button>-->
-<!--                    </form>-->
-<!--                </li>-->
-                <li class="nav-item">
-                    <form th:method="get">
-                        <select class="nav-link btn nav-button text-white py-3 px-2"
-                                onchange="this.form.submit()"
-                                id="lang"
-                                name="lang">
-                            <option class="text-dark" value="en_US" th:selected="${#locale.toString()} == 'en_US'">EN
-                            </option>
-                            <option class="text-dark" value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">БГ
-                            </option>
-                        </select>
-                    </form>
-                </li>
+                <!--                TODO: complete the dropdown-->
+                <!--                <div class="dropdown nav-item">-->
+                <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="icon-person"></i>
+                        <span sec:authorize="isAuthenticated()"
+                              th:text="${#authentication.principal.firstName}"></span>
+                        <!--                        <i class="icon-keyboard_arrow_down"></i>-->
+                    </a>
+                    <div class="dropdown-menu m-0" aria-labelledby="navbarDropdownMenuLink">
 
-            </ul>
+                        <a class="dropdown-item" href="#">My cars</a>
+                        <a class="dropdown-item" href="#">My rents</a>
+                        <a class="dropdown-item" href="#">Edit Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <form th:action="@{/users/logout}" th:method="post">
+                            <button class="btn logout dropdown-item" type="submit">
+                                <span th:text="#{navbar_logout}"></span>
+                                <span class="ion-ios-log-out float-right"></span>
+                            </button>
+                        </form>
         </div>
+        </li>
+        <!--                </div>-->
+        <!--                <li class="nav-item" sec:authorize="!isAuthenticated()">-->
+        <!--                    <form th:action="@{/users/logout}" th:method="post">-->
+        <!--                        <button class="nav-link btn btn-outline-success logout nav-button py-3 px-2 text-white"-->
+        <!--                                type="submit">-->
+        <!--                            <span th:text="#{navbar_logout}"></span>-->
+        <!--                        </button>-->
+        <!--                    </form>-->
+        <!--                </li>-->
+        <li class="nav-item">
+            <form th:method="get">
+                <select class="nav-link btn nav-button text-white py-3 px-2"
+                        onchange="this.form.submit()"
+                        id="lang"
+                        name="lang">
+                    <option class="text-dark" value="en_US" th:selected="${#locale.toString()} == 'en_US'">EN
+                    </option>
+                    <option class="text-dark" value="bg_BG" th:selected="${#locale.toString()} == 'bg_BG'">БГ
+                    </option>
+                </select>
+            </form>
+        </li>
+
+        </ul>
+    </div>
     </div>
 </nav>
 </body>
