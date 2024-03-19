@@ -1,15 +1,10 @@
 package com.example.rentalcars.model.entity;
 
-import com.example.rentalcars.model.enums.CoupeTypeEnum;
-import com.example.rentalcars.model.enums.FuelTypeEnum;
-import com.example.rentalcars.model.enums.GearboxEnum;
+import com.example.rentalcars.model.enums.*;
 
-import com.example.rentalcars.model.enums.PuckUpAndDropOffLocation;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.annotations.Type;
 
 import java.math.BigDecimal;
 import java.sql.Types;
@@ -64,7 +59,8 @@ public class OfferEntity{
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private PuckUpAndDropOffLocation location;
+    private LocationEnum location;
+
 
 
     public UUID getUUID() {
@@ -202,11 +198,11 @@ public class OfferEntity{
         return this;
     }
 
-    public PuckUpAndDropOffLocation getLocation() {
+    public LocationEnum getLocation() {
         return location;
     }
 
-    public OfferEntity setLocation(PuckUpAndDropOffLocation location) {
+    public OfferEntity setLocation(LocationEnum location) {
         this.location = location;
         return this;
     }

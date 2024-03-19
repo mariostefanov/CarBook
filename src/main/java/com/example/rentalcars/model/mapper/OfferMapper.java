@@ -1,6 +1,7 @@
 package com.example.rentalcars.model.mapper;
 
 import com.example.rentalcars.model.dto.AddOfferDTO;
+import com.example.rentalcars.model.dto.MyOffersDTO;
 import com.example.rentalcars.model.dto.OfferDetailsDTO;
 import com.example.rentalcars.model.entity.OfferEntity;
 import org.mapstruct.Mapper;
@@ -10,6 +11,9 @@ import org.mapstruct.Mapping;
 public interface OfferMapper {
 
     OfferEntity addOfferDTOToOfferEntity(AddOfferDTO addOfferDTO);
+    @Mapping(source = "model.name" ,target = "model")
+    @Mapping(source = "model.brand.name", target = "brand")
+    MyOffersDTO offerEntityToMyOffersDto(OfferEntity offerEntity);
 
     @Mapping(source = "model.name" ,target = "model")
     @Mapping(source = "model.brand.name", target = "brand")

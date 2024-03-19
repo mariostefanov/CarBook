@@ -1,6 +1,7 @@
 package com.example.rentalcars.service;
 
 import com.example.rentalcars.model.dto.AddOfferDTO;
+import com.example.rentalcars.model.dto.MyOffersDTO;
 import com.example.rentalcars.model.dto.OfferDetailsDTO;
 import com.example.rentalcars.model.entity.ModelEntity;
 import com.example.rentalcars.model.entity.OfferEntity;
@@ -14,8 +15,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -57,5 +60,10 @@ public class OfferService {
         return this.offerRepository.
                 findById(uuid).
                 map(offerMapper::offerEntityToOfferDetailDTO);
+    }
+
+    public List<MyOffersDTO> getOffersByOwner(UserDetails userDetails) {
+
+        return this.offerRepository.findByOwnerEmail(userDetails.getUsername()).stream().map(offerMapper::offerEntityToMyOffersDto).collect(Collectors.toList());
     }
 }
