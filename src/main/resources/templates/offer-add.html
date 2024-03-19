@@ -212,7 +212,25 @@
                                 Coupe type is required.
                             </p>
                         </div>
+                    </div>
 
+                    <div class="form-group col-md-6 mb-3">
+                        <label class="field" for="transmission">Transmission type</label>
+                        <select id="location"
+                                name="location"
+                                th:errorclass="is-invalid"
+                                class="form-control">
+                            <option value="">- Select location -</option>
+                            <option th:each="l :${T(com.example.rentalcars.model.enums.LocationEnum).values()}"
+                                    th:text="${l}"
+                                    th:value="${l}"
+                                    th:selected="${l} == *{location}">
+                                Location
+                            </option>
+                        </select>
+                        <p class="invalid-feedback errors alert alert-danger">
+                            Location type is required.
+                        </p>
                     </div>
                     <div class="form-group">
                         <label class="field" for="description">Description</label>

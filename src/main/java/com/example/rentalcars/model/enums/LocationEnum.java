@@ -1,6 +1,6 @@
 package com.example.rentalcars.model.enums;
 
-public enum PuckUpAndDropOffLocation {
+public enum LocationEnum {
     Burgas,
     Plovdiv,
     Sofia ,
