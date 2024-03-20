@@ -5,6 +5,8 @@ import com.example.rentalcars.model.enums.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.math.BigDecimal;
 import java.sql.Types;
@@ -12,7 +14,7 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "offers")
-public class OfferEntity{
+public class OfferEntity {
     @Id
     @NotNull
     @JdbcTypeCode(Types.VARCHAR)
@@ -61,7 +63,8 @@ public class OfferEntity{
     @Column(nullable = false)
     private LocationEnum location;
 
-
+    @Column(columnDefinition = "boolean default true")
+    private boolean isActive;
 
     public UUID getUUID() {
         return uuid;
@@ -204,6 +207,15 @@ public class OfferEntity{
 
     public OfferEntity setLocation(LocationEnum location) {
         this.location = location;
+        return this;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public OfferEntity setActive(boolean active) {
+        isActive = active;
         return this;
     }
 }

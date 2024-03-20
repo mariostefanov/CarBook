@@ -41,7 +41,7 @@ public class MyOffersDTO {
 
     }
 
-    public String getBrandAndModel(String brand, String model){
+    public String getBrandAndModel(){
         return brand + " " + model;
     }
 }

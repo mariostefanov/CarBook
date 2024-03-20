@@ -8954,7 +8954,7 @@ h1, h2, h3, h4, h5,
         -ms-transition: all 0.3s ease;
         transition: all 0.3s ease; }
       .table tbody tr td.price:hover.price {
-        background: #01d28e; }
+        background: #015cd2; }
       .table tbody tr td.price:hover .btn-custom {
         opacity: 1; }
       .table tbody tr td.price:hover .price-rate {
@@ -9985,4 +9985,13 @@ a.nav-link.btn.btn-link.btn-outline-success.nav-button.logout{
   margin-top: 12px;
   color: white;
   background: #01d28e;
+}
+
+.table td.table-content{
+  width: 200px; /* Adjust width as needed */
+  text-align: center;
+  vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
 }

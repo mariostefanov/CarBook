@@ -3,6 +3,7 @@ package com.example.rentalcars.model.dto;
 import com.example.rentalcars.model.enums.CoupeTypeEnum;
 import com.example.rentalcars.model.enums.FuelTypeEnum;
 import com.example.rentalcars.model.enums.GearboxEnum;
+import com.example.rentalcars.model.enums.LocationEnum;
 import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
@@ -41,6 +42,7 @@ public class AddOfferDTO {
     @NotNull
     private BigDecimal deposit;
     @NotEmpty
+    //TODO: Limit for field
     private String imageUrl;
 
     @NotNull
@@ -49,6 +51,9 @@ public class AddOfferDTO {
 
     @NotNull
     private CoupeTypeEnum coupeType;
+
+    private LocationEnum location;
+
 
     public Long getModelId() {
         return modelId;
@@ -157,4 +162,15 @@ public class AddOfferDTO {
         this.coupeType = coupeType;
         return this;
     }
+
+    public LocationEnum getLocation() {
+        return location;
+    }
+
+    public AddOfferDTO setLocation(LocationEnum location) {
+        this.location = location;
+        return this;
+    }
+
+
 }

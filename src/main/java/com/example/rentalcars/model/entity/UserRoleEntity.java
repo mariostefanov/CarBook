@@ -5,7 +5,7 @@ import com.example.rentalcars.model.enums.UserRoleEnum;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "user_roles")
+@Table(name = "roles")
 public class UserRoleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

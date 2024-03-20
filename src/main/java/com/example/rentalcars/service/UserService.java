@@ -112,7 +112,7 @@ public class UserService {
                 .setFirstName("Moderator")
                 .setLastName("Moderatorov")
                 .setEmail("moderator@mail.com")
-                .setPassword(passwordEncoder.encode("pass"));
+                .setPassword(passwordEncoder.encode("passs"));
 
         userRepository.save(moderator);
     }
