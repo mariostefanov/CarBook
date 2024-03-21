@@ -17,6 +17,17 @@ public class UserController {
     }
 
 
+    @PostMapping("/login-error")
+    public String onFailedLogin(
+            @ModelAttribute("email") String email,
+            RedirectAttributes redirectAttributes
+    ){
+        redirectAttributes.addFlashAttribute("email", email);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+
+        return "redirect:/users/login";
+
+    }
 
 
 }
