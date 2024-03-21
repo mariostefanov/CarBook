@@ -1,12 +1,11 @@
 package com.example.rentalcars.model.dto;
 
 public class MyOffersDTO {
-    String model;
-    String brand;
+    private String model;
+    private String brand;
+    private String coupeType;
 
-
-
-    String coupeType;
+    private boolean isActive;
 
     public MyOffersDTO() {
     }
@@ -44,6 +43,16 @@ public class MyOffersDTO {
     public String getBrandAndModel(){
         return brand + " " + model;
     }
+
+    public MyOffersDTO setActive(boolean active) {
+        isActive = active;
+        return this;
+    }
+
+    public boolean isActive(){
+        return isActive;
+    }
+
 }
 
 

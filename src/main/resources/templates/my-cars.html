@@ -21,7 +21,8 @@
 				<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class=" border-1">
-	    				<table class="table align-middle p-4 mb-0 table-hover" th:each="offer : ${offers}"
+	    				<table class="table align-middle p-4 mb-0 table-hover"
+                               th:each="offer, offerStat : ${offers}"
                                th:object="${offer}">
 <!--						    <thead >-->
 <!--						      <tr class="text-center">-->
@@ -34,7 +35,7 @@
 <!--						    </thead>-->
 						    <tbody>
 						      <tr>
-                                  <th scope="row"><th:block> 1 </th:block></th>
+                                  <th class="table-content align-middle" scope="row"><th:block th:text="${offerStat.index + 1}"> </th:block></th>
 						      	<td class="car-image"><div class="img" style="background-image:url(/images/car-1.jpg);"></div></td>
 						        <td class="table-content">
 						        	<h3 class=""><th:block th:text="*{getBrandAndModel}"></th:block></h3>
@@ -48,9 +49,14 @@
 <!--						        	</p>-->
 						        </td>
 						        
-						        <td class="product-name text-center">
-									<i class =" ion-ios-checkmark-circle text-success"></i>
-									Active
+						        <td class="table-content">
+									<i  th:classappend="${offer.isActive()} ? 'ion-ios-checkmark-circle text-success' :'icon-cancel text-danger'"></i>
+                                    <th:block
+                                            th:if="${offer.isActive}" th:text="Active">
+                                    </th:block>
+                                    <th:block th:unless="${offer.isActive()}" th:text="Inactive">
+
+                                    </th:block>
 <!--						        	<p class="btn-custom"><a href="#">Car Details</a></p>-->
 <!--						        	<div class="price-rate">-->
 <!--							        	<h3>-->
@@ -61,9 +67,9 @@
 <!--						        	</div>-->
 						        </td>
 						        
-						        <td class="product-name text-center">
+						        <td class="table-content">
 
-							        		<span class="text">Sedan</span>
+							        		<span th:text="${offer.getCoupeType()}"></span>
 <!--							        		<span class="per">/per day</span>-->
 
 
