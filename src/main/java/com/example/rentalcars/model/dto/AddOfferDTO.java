@@ -42,7 +42,6 @@ public class AddOfferDTO {
     @NotNull
     private BigDecimal deposit;
     @NotEmpty
-    //TODO: Limit for field
     private String imageUrl;
 
     @NotNull

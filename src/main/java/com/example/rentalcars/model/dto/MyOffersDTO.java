@@ -7,6 +7,8 @@ public class MyOffersDTO {
 
     private boolean isActive;
 
+    private  String imageUrl;
+
     public MyOffersDTO() {
     }
 
@@ -49,9 +51,19 @@ public class MyOffersDTO {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public MyOffersDTO setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
+
     public boolean isActive(){
         return isActive;
     }
+
 
 }
 

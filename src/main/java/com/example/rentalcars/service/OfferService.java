@@ -45,6 +45,7 @@ public class OfferService {
         OfferEntity newOffer = offerMapper
                 .addOfferDTOToOfferEntity(addOfferDTO);
         newOffer.setUUID(UUID.randomUUID());
+        newOffer.setActive(true);
         //TODO: current user should be logged in
         UserEntity owner = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
 

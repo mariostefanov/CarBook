@@ -36,7 +36,11 @@
 						    <tbody>
 						      <tr>
                                   <th class="table-content align-middle" scope="row"><th:block th:text="${offerStat.index + 1}"> </th:block></th>
-						      	<td class="car-image"><div class="img" style="background-image:url(/images/car-1.jpg);"></div></td>
+						      	<td class="car-image">
+                                    <div class="card-img-top-wrapper">
+                                        <img th:src="*{imageUrl}" width="299" height="168   " alt="Car image">
+                                    </div>
+                                </td>
 						        <td class="table-content">
 						        	<h3 class=""><th:block th:text="*{getBrandAndModel}"></th:block></h3>
 <!--						        	<p class="mb-0 rated">-->

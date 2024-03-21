@@ -23,6 +23,7 @@ public class OfferEntity {
     @Column(nullable = false)
     private FuelTypeEnum engine;
 
+    @Column(columnDefinition = "text")
     private String imageUrl;
 
     @Column(nullable = false)
@@ -32,7 +33,6 @@ public class OfferEntity {
     private BigDecimal deposit;
 
     @Column(nullable = false, columnDefinition = "text")
-
     private String description;
 
     @Enumerated(EnumType.STRING)
