@@ -6,6 +6,7 @@ import com.example.rentalcars.service.BrandService;
 import com.example.rentalcars.service.OfferService;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -55,7 +56,7 @@ public class OfferController {
             return "redirect:/offers/add";
         }
 
-        offerService.addOffer(addOfferModel,userDetails);
+        offerService.addOffer(addOfferModel, userDetails);
 
         return "redirect:/";
     }
@@ -63,21 +64,24 @@ public class OfferController {
     @GetMapping("offers/all")
     public String allOffers(
             Model model,
-            @PageableDefault(page = 0,size = 6) Pageable pageable) {
-        model.addAttribute("offers",offerService.getAllOffers(pageable));
+            @PageableDefault(
+                    sort = "pricePerDay",
+                    direction = Sort.Direction.ASC,
+                    page = 0,
+                    size = 6)
+            Pageable pageable) {
+        model.addAttribute("offers", offerService.getAllOffers(pageable));
         return "car";
     }
 
 
-
-    @GetMapping("/offers/{id}")
-    public String getOfferDetail(@PathVariable("id") UUID uuid, Model model){
-        System.out.println("sASasAS");
+    @GetMapping("/offers/{id}/details")
+    public String getOfferDetail(@PathVariable("id") UUID uuid, Model model) {
         var offerDto =
                 offerService.findOfferByUUID(uuid)
                         .orElseThrow(() -> new ObjectNotFoundException("Offer with UUID " + uuid + " not found!"));
 
         model.addAttribute("offer", offerDto);
-        return  "car-single";
+        return "car-single";
     }
 }
