@@ -8,7 +8,6 @@ import jakarta.validation.constraints.*;
 import java.math.BigDecimal;
 
 public class OfferDetailsDTO {
-//
     private String brand;
     private String model;
     private String imageUrl;

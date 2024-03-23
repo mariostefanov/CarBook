@@ -24,9 +24,10 @@
     			<div th:each="offer : ${offers.getContent()}"
                      th:object="${offer}"
 						class="col-md-4">
-    				<div class="car-wrap rounded ftco-animate">
-    					<div class="img rounded d-flex align-items-end" style="background-image: url(/images/car-1.jpg);">
-    					</div>
+    				<div class="car-wrap rounded ftco-a nimate">
+    					<div class="img rounded d-flex ">
+                            <img th:src="*{imageUrl}" class="img-fluid mx-auto d-block" alt="Car image">
+                        </div>
     					<div class="text">
     						<h2 class="mb-0" ><a href="car-single.html"><th:block th:text="*{getBrandAndModel}"></th:block></a></h2>
     						<div class="d-flex mb-3">
