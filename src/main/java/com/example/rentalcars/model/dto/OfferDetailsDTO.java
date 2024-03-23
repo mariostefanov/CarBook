@@ -3,11 +3,13 @@ package com.example.rentalcars.model.dto;
 import com.example.rentalcars.model.enums.CoupeTypeEnum;
 import com.example.rentalcars.model.enums.FuelTypeEnum;
 import com.example.rentalcars.model.enums.GearboxEnum;
-import jakarta.validation.constraints.*;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class OfferDetailsDTO {
+
+    private UUID uuid;
     private String brand;
     private String model;
     private String imageUrl;
@@ -43,6 +45,14 @@ public class OfferDetailsDTO {
     public OfferDetailsDTO() {
     }
 
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public OfferDetailsDTO setUuid(UUID uuid) {
+        this.uuid = uuid;
+        return this;
+    }
 
     public String getBrand() {
         return brand;

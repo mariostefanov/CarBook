@@ -29,12 +29,12 @@
                             <img th:src="*{imageUrl}" class="img-fluid mx-auto d-block" alt="Car image">
                         </div>
     					<div class="text">
-    						<h2 class="mb-0" ><a href="car-single.html"><th:block th:text="*{getBrandAndModel}"></th:block></a></h2>
+    						<h2 class="mb-0" ><th:block th:text="*{getBrandAndModel}"></th:block></a></h2>
     						<div class="d-flex mb-3">
 	    						<span class="cat"><th:block th:text="*{location}"></th:block></span>
 	    						<p class="price ml-auto"><th:block th:text="*{pricePerDay}"></th:block>лв.<span>/day</span></p>
     						</div>
-    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a href="car-single.html" class="btn btn-secondary py-2 ml-1">Details</a></p>
+    						<p class="d-flex mb-0 d-block"><a href="#" class="btn btn-primary py-2 mr-1">Book now</a> <a th:href="@{/offers/{offerId}/details(offerId=${offer.uuid})}" class="btn btn-secondary py-2 ml-1">Details</a></p>
     					</div>
     				</div>
     			</div>

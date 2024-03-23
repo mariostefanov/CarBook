@@ -29,7 +29,7 @@ public class SecurityConfig {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         // Allow anyone to see the home page, the registration page and the login form
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-                        .requestMatchers("/offers/all").permitAll()
+                        .requestMatchers("/offers/**").permitAll()
                         // all other requests are authenticated
                         .anyRequest().authenticated()
         ).formLogin(
