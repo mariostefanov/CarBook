@@ -200,13 +200,15 @@
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li th:classappend="${offers.isFirst()} ? 'hidden' : 'active'"><a
+                <li th:classappend="${offers.isFirst()} ? 'hidden' : 'active'">
+                    <a
                         th:if="${offers.hasPrevious()}"
                         th:href="@{/offers/all(size=${offers.getSize()},page=${offers.getNumber() - 1})}"
-                        >&lt;</a>
+                        >
+                        &lt;</a>
 
                     <a
-                            th:unless="${offers.hasPrevious()}" href="" >&lt;
+                            th:unless="${offers.hasPrevious()}" th:classappend="${offers.hasPrevious()} ? 'active' : 'hidden'" >&lt;
                     </a>
                 </li>
                 <li class="disabled"><span th:text="${offers.getNumber() + 1}"></span></li>
