@@ -10,9 +10,14 @@ import java.math.BigDecimal;
 
 public class AddOfferDTO {
 
+
     @NotNull
     @Min(1)
     private Long modelId;
+
+    @NotNull
+    @Pattern(regexp = "^[A-Z]{1,2}\\d{4}[A-Z]{2}$", message = "License plate is not in correct format")
+    private String licensePlate;
     @NotNull
     @Positive
     private BigDecimal pricePerDay;
@@ -60,6 +65,15 @@ public class AddOfferDTO {
 
     public AddOfferDTO setModelId(Long modelId) {
         this.modelId = modelId;
+        return this;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public AddOfferDTO setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
         return this;
     }
 

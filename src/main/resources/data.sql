@@ -36,7 +36,7 @@ VALUES (1,1,'Focus'),
        (10, 4,'A6')
 ;
 
-INSERT INTO offers (uuid,license_no,fuel_tank_volume, price_per_day, seats_count, year, model_id, coupe_type, description, engine, image_url, transmission, mileage, deposit, location, owner_id)
+INSERT INTO offers (uuid,license_plate,fuel_tank_volume, price_per_day, seats_count, year, model_id, coupe_type, description, engine, image_url, transmission, mileage, deposit, location, owner_id)
 VALUES('b72e6550-e365-43bf-aab2-b57cafc2db7c', 'PA7877CA',50,55,5,2007,1,1,'A sample description', 'GASOLINE','https://frankfurt.apollo.olxcdn.com/v1/files/evjuetgpmatq3-BG/image;s=1000x700',1 , 10000, 100, 'Sofia' , 1),
       ('b72e6550-e365-43bf-aab2-b57cafc2db71','PA7867CA',70,100,4,2012,3,2,'A sample description2', 'HYBRID','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYfvLy3KQKbQLqY7kz35liCJVTJA4s9y3Z_A&usqp=CAU',2 , 10000, 900,'Varna',3 ),
       ('b72e6550-e365-43bf-aab2-b57cafc2db72','BP7897CA',30,200,4,2012,3,3,'A sample description3', 'GASOLINE','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYfvLy3KQKbQLqY7kz35liCJVTJA4s9y3Z_A&usqp=CAU',1 , 20000, 800 , 'Burgas',2),

@@ -6,7 +6,8 @@
 
 <div th:replace="~{fragments/navbar}">Navbar</div>
 
-<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');" data-stellar-background-ratio="0.5">
+<section class="hero-wrap hero-wrap-2 js-fullheight" style="background-image: url('/images/bg_3.jpg');"
+         data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
@@ -55,145 +56,146 @@
                       th:object="${addOfferModel}"
                       class="bg-light p-5 contact-form">
                     <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label class="field" for="modelId">Model</label>
-                        <select  id="modelId"
-                                 name="modelId"
-                                 th:errorclass="is-invalid"
-                                 class="form-control">
-                            <option value="">- Select a model -</option>
-                            <optgroup
-                                    th:each="brand: ${brands}"
-                                    th:label="${brand.name}">
-                                <option
-                                    th:each="model : ${brand.models}"
-                                    th:text="${model.name}"
-                                    th:value="${model.id}"
-                                    th:selected="*{modelId} == ${model.id}">Model</option>
+                        <div class="form-group col-md-6 mb-3">
+                            <label class="field" for="modelId">Model</label>
+                            <select id="modelId"
+                                    name="modelId"
+                                    th:errorclass="is-invalid"
+                                    class="form-control">
+                                <option value="">- Select a model -</option>
+                                <optgroup
+                                        th:each="brand: ${brands}"
+                                        th:label="${brand.name}">
+                                    <option
+                                            th:each="model : ${brand.models}"
+                                            th:text="${model.name}"
+                                            th:value="${model.id}"
+                                            th:selected="*{modelId} == ${model.id}">Model
+                                    </option>
 
-                            </optgroup>
-                        </select>
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Vehicle model is required.
-                        </p>
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label  for="price" class="field">Price per day(EUR)</label>
-                        <input id="price"
-                               type="number"
-                               th:field="*{pricePerDay}"
-                               th:errorclass="is-invalid"
-                               class="form-control"
-                               placeholder="Price per day"
-                               step="any"
-                        >
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Price per day is required.
-                        </p>
-                    </div>
-                    </div>
-                    <div class="row">
-                    <div class="form-group col-md-6 mb-3">
-                        <label for="engine" class="field">Engine type</label>
-                        <select id="engine"
-                                name = "engine"
-                                th:errorclass="is-invalid"
-                                class="form-control">
-                            <option value="">- Select engine type -</option>
-                            <option th:each="e :${T(com.example.rentalcars.model.enums.FuelTypeEnum).values()}"
-                                    th:text="${e}"
-                                    th:value="${e}"
-                                    th:selected="${e} == *{engine}">
-                                Engine type
-                            </option>
-                        </select>
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Engine type is required.
-                        </p>
-                    </div>
-                    <div class="form-group col-md-6 mb-3">
-                        <label class="field" for="transmission">Transmission type</label>
-                        <select id="transmission"
-                                name="transmission"
-                                th:errorclass="is-invalid"
-                                class="form-control">
-                            <option value="">- Select transmission type -</option>
-                            <option th:each="e :${T(com.example.rentalcars.model.enums.GearboxEnum).values()}"
-                                    th:text="${e}"
-                                    th:value="${e}"
-                                    th:selected="${e} == *{transmission}">
-                                Transmission type
-                            </option>
-                        </select>
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Transmission type is required.
-                        </p>
-                    </div>
-                    </div>
-                        <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="year" class="field">Manufacturing year</label>
-                                <input id="year"
-                                       type="number"
-                                       th:field="*{year}"
-                                       th:errorclass="is-invalid"
-                                       class="form-control"
-                                       placeholder="Manufacturing year">
-                                <p class="invalid-feedback errors alert alert-danger">
-                                    Manufacturing year is required.
-                                </p>
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label  for="fuelTank" class="field">Fuel tank volume</label>
-                                <input id="fuelTank"
-                                       th:field="*{fuelTankVolume}"
-                                       th:errorclass="is-invalid"
-                                       type="number"
-                                       class="form-control"
-                                       placeholder="Fuel tank volume">
-                                <p class="invalid-feedback errors alert alert-danger">
-                                    Fuel tank volume is required.
-                                </p>
-                            </div>
+                                </optgroup>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Vehicle model is required.
+                            </p>
                         </div>
-                    <div class="row">
-                            <div class="form-group col-md-6 mb-3">
-                                <label for="mileage" class="field">Mileage</label>
-                                <input id="mileage"
-                                       th:field="*{mileage}"
-                                       th:errorclass="is-invalid"
-                                       type="number"
-                                       class="form-control"
-                                       placeholder="mileage">
-                                <p class="invalid-feedback errors alert alert-danger">
-                                    Mileage is required.
-                                </p>
-                            </div>
-                            <div class="form-group col-md-6 mb-3">
-                                <label  for="seats-count" class="field">Seats</label>
-                                <input id="seats-count"
-                                       th:field="*{seatsCount}"
-                                       th:errorclass="is-invalid"
-                                       type="number" class="form-control" placeholder="number of seats">
-                                <p class="invalid-feedback errors alert alert-danger">
-                                   Seats is required.
-                                </p>
-                            </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="price" class="field">Price per day(EUR)</label>
+                            <input id="price"
+                                   type="number"
+                                   th:field="*{pricePerDay}"
+                                   th:errorclass="is-invalid"
+                                   class="form-control"
+                                   placeholder="Price per day"
+                                   step="any"
+                            >
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Price per day is required.
+                            </p>
                         </div>
+                    </div>
                     <div class="row">
                         <div class="form-group col-md-6 mb-3">
-                        <label  for="deposit" class="field">Deposit(EUR)</label>
-                        <input id="deposit"
-                               type="number"
-                               th:field="*{deposit}"
-                               th:errorclass="is-invalid"
-                               class="form-control"
-                               placeholder="Deposit"
-                               step="any">
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Deposit is required.
-                        </p>
+                            <label for="engine" class="field">Engine type</label>
+                            <select id="engine"
+                                    name="engine"
+                                    th:errorclass="is-invalid"
+                                    class="form-control">
+                                <option value="">- Select engine type -</option>
+                                <option th:each="e :${T(com.example.rentalcars.model.enums.FuelTypeEnum).values()}"
+                                        th:text="${e}"
+                                        th:value="${e}"
+                                        th:selected="${e} == *{engine}">
+                                    Engine type
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Engine type is required.
+                            </p>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label class="field" for="transmission">Transmission type</label>
+                            <select id="transmission"
+                                    name="transmission"
+                                    th:errorclass="is-invalid"
+                                    class="form-control">
+                                <option value="">- Select transmission type -</option>
+                                <option th:each="e :${T(com.example.rentalcars.model.enums.GearboxEnum).values()}"
+                                        th:text="${e}"
+                                        th:value="${e}"
+                                        th:selected="${e} == *{transmission}">
+                                    Transmission type
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Transmission type is required.
+                            </p>
+                        </div>
                     </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="year" class="field">Manufacturing year</label>
+                            <input id="year"
+                                   type="number"
+                                   th:field="*{year}"
+                                   th:errorclass="is-invalid"
+                                   class="form-control"
+                                   placeholder="Manufacturing year">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Manufacturing year is required.
+                            </p>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="fuelTank" class="field">Fuel tank volume</label>
+                            <input id="fuelTank"
+                                   th:field="*{fuelTankVolume}"
+                                   th:errorclass="is-invalid"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="Fuel tank volume">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Fuel tank volume is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="mileage" class="field">Mileage</label>
+                            <input id="mileage"
+                                   th:field="*{mileage}"
+                                   th:errorclass="is-invalid"
+                                   type="number"
+                                   class="form-control"
+                                   placeholder="mileage">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Mileage is required.
+                            </p>
+                        </div>
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="seats-count" class="field">Seats</label>
+                            <input id="seats-count"
+                                   th:field="*{seatsCount}"
+                                   th:errorclass="is-invalid"
+                                   type="number" class="form-control" placeholder="number of seats">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Seats is required.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label for="deposit" class="field">Deposit(EUR)</label>
+                            <input id="deposit"
+                                   type="number"
+                                   th:field="*{deposit}"
+                                   th:errorclass="is-invalid"
+                                   class="form-control"
+                                   placeholder="Deposit"
+                                   step="any">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Deposit is required.
+                            </p>
+                        </div>
                         <div class="form-group col-md-6 mb-3">
                             <label class="field" for="coupeType">Coupe type</label>
                             <select id="coupeType"
@@ -213,24 +215,37 @@
                             </p>
                         </div>
                     </div>
-
-                    <div class="form-group col-md-6 mb-3">
-                        <label class="field" for="transmission">Transmission type</label>
-                        <select id="location"
-                                name="location"
-                                th:errorclass="is-invalid"
-                                class="form-control">
-                            <option value="">- Select location -</option>
-                            <option th:each="l :${T(com.example.rentalcars.model.enums.LocationEnum).values()}"
-                                    th:text="${l}"
-                                    th:value="${l}"
-                                    th:selected="${l} == *{location}">
-                                Location
-                            </option>
-                        </select>
-                        <p class="invalid-feedback errors alert alert-danger">
-                            Location type is required.
-                        </p>
+                    <div class="row">
+                        <div class="form-group col-md-6 mb-3">
+                            <label class="field" for="transmission">Location</label>
+                            <select id="location"
+                                    name="location"
+                                    th:errorclass="is-invalid"
+                                    class="form-control">
+                                <option value="">- Select location -</option>
+                                <option th:each="l :${T(com.example.rentalcars.model.enums.LocationEnum).values()}"
+                                        th:text="${l}"
+                                        th:value="${l}"
+                                        th:selected="${l} == *{location}">
+                                    T
+                                </option>
+                            </select>
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Location is required.
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <label class="field" for="licensePlate">License Plate</label>
+                            <input id="licensePlate"
+                                   type="text"
+                                   th:field="*{licensePlate}"
+                                   th:errorclass="is-invalid"
+                                   class="form-control"
+                                   placeholder="Put vehicle license plate here">
+                            <p class="invalid-feedback errors alert alert-danger">
+                                Vehicle license plate is required.
+                            </p>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label class="field" for="description">Description</label>
@@ -277,9 +292,14 @@
 <div th:replace="~{fragments/footer}">Footer</div>
 
 
-
 <!-- loader -->
-<div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+<div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+        <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00"/>
+    </svg>
+</div>
 
 
 <script src="/js/jquery.min.js"></script>

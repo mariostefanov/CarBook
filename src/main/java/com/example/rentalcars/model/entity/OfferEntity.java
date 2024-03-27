@@ -5,8 +5,6 @@ import com.example.rentalcars.model.enums.*;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.hibernate.annotations.JdbcTypeCode;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.math.BigDecimal;
 import java.sql.Types;
@@ -20,8 +18,8 @@ public class OfferEntity {
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
 
-    @Column(unique = true,nullable = false, name = "license_no")
-    private String licenseNo;
+    @Column(unique = true,nullable = false)
+    private String licensePlate;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FuelTypeEnum engine;
@@ -78,12 +76,12 @@ public class OfferEntity {
         return this;
     }
 
-    public String getLicenseNo() {
-        return licenseNo;
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
-    public OfferEntity setLicenseNo(String licenseNo) {
-        this.licenseNo = licenseNo;
+    public OfferEntity setLicensePlate(String licenseNo) {
+        this.licensePlate = licenseNo;
         return this;
     }
 
