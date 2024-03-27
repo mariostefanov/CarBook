@@ -19,6 +19,9 @@ public class OfferEntity {
     @NotNull
     @JdbcTypeCode(Types.VARCHAR)
     private UUID uuid;
+
+    @Column(unique = true,nullable = false, name = "license_no")
+    private String licenseNo;
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private FuelTypeEnum engine;
@@ -72,6 +75,15 @@ public class OfferEntity {
 
     public OfferEntity setUUID(UUID uuid) {
         this.uuid = uuid;
+        return this;
+    }
+
+    public String getLicenseNo() {
+        return licenseNo;
+    }
+
+    public OfferEntity setLicenseNo(String licenseNo) {
+        this.licenseNo = licenseNo;
         return this;
     }
 

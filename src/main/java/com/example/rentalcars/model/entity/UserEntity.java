@@ -10,6 +10,10 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity extends BaseEntity{
 
+
+    @Column(unique = true,nullable = false)
+    private String drivingLicenseNo;
+
     @Column(nullable = false,
             unique = true)
     private String email;
@@ -35,6 +39,16 @@ public class UserEntity extends BaseEntity{
     private List<OfferEntity> offers;
    /* @OneToMany
     private List<OfferEntity> offers;*/
+
+
+    public String getDrivingLicenseNo() {
+        return drivingLicenseNo;
+    }
+
+    public UserEntity setDrivingLicenseNo(String drivingLicenseNo) {
+        this.drivingLicenseNo = drivingLicenseNo;
+        return this;
+    }
 
     public String getEmail() {
         return email;
