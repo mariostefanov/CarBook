@@ -4,5 +4,6 @@ public enum FuelTypeEnum {
     GASOLINE,
     DIESEL,
     Electricity,
+    Mathane,
     HYBRID
 }
