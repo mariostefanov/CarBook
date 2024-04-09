@@ -8,6 +8,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 
 import java.math.BigDecimal;
 import java.sql.Types;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -52,6 +53,9 @@ public class OfferEntity {
 
     @ManyToOne(targetEntity = UserEntity.class)
     private UserEntity owner;
+
+    @OneToMany(mappedBy = "offer")
+    private List<BookingEntity> bookings;
 
     private int seatsCount;
 
@@ -199,6 +203,15 @@ public class OfferEntity {
 
     public OfferEntity setOwner(UserEntity owner) {
         this.owner = owner;
+        return this;
+    }
+
+    public List<BookingEntity> getBookings() {
+        return bookings;
+    }
+
+    public OfferEntity setBookings(List<BookingEntity> rentals) {
+        this.bookings = rentals;
         return this;
     }
 
