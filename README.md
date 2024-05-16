@@ -2,8 +2,8 @@
 
 ![CarBook](https://github.com/mariostefanov/CarBook/blob/master/src/main/resources/static/images/Carbook_home.png)
 
-## About this project help people with cars they don't use to connect with people who have a temporary need for a car
-### The purpose of this application is to .
+## About this project
+### The purpose of this application is to help people with cars they don't use to connect with people who have a temporary need for a car.
 
 ### Build With:
 * ![Spring Boot](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
