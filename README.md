@@ -1,6 +1,6 @@
 # CarBook
 
-![Diary of Beekeeper](https://github.com/mariostefanov/CarBook/src/main/resources/static/images/Carbook_home.png)
+![CarBook](https://github.com/mariostefanov/CarBook/blob/master/src/main/resources/static/images/Carbook_home.png)
 
 ## About this project help people with cars they don't use to connect with people who have a temporary need for a car
 ### The purpose of this application is to .
